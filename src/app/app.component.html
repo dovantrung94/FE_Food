@@ -1,0 +1,6 @@
+<div class="menu-left col-md-3" *ngIf="showMenu">
+    <app-menu-left></app-menu-left>
+</div>
+<div [ngClass]="showMenu ? 'col-md-9' : 'col-md-12'">
+    <router-outlet></router-outlet>
+</div>

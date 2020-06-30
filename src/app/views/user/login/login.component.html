@@ -1,0 +1,18 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="box">
+    <label for="userName" class="info-label">Username</label>
+    <input placeholder="name" type="text" name="userName" formControlName="userName" required>
+
+    <label for="psw" class="info-label">Password</label>
+    <input placeholder="password" type="password" formControlName="password" required>
+    <div>
+      <input class="remember" type="checkbox" checked="checked" name="remember"> Remember me
+      <a class="forgot">Forgot password</a>
+    </div>
+    <button type="submit" class="login">Login</button>
+    <div class="new-account">
+      <a>Create new account -></a>
+    </div>
+  </div>
+
+</form>
