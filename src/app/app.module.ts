@@ -14,13 +14,15 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterComponent } from './views/user/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MenuLeftComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

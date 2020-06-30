@@ -1,1 +1,115 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #f4f4f4;
+    color: #4f4f4f;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.box-content-df {
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+}
+.mgt-df {
+  margin-top: 132px;
+  min-height: 76vh;
+  margin-bottom: 20px;
+}
+.txt-center {
+  text-align: center;
+}
+.txt-err-df {
+  color: #dc4d3f;
+}
+.txt-correct-df {
+  color: #3367d6;
+}
+.input-err-df {
+  border: 1px solid #dc4d3f!important;
+}
+
+/* 1 so the co ban */
+a {
+  cursor: pointer;
+  color: #3367d6;
+}
+a:hover {
+  color: #3367d6;
+  opacity: 0.8;
+}
+button:focus {
+  outline: none;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #4d81ed;
+}
+/* margin */
+.mgl-4 {
+  margin-left: 4px;
+}
+.mgr-4 {
+  margin-right: 4px;
+}
+.mgb-4 {
+  margin-bottom: 4px;
+}
+/* size icon */
+.ic-10 {
+  width: 10px;
+}
+.ic-16 {
+  width: 16px;
+}
+.ic-20 {
+  width: 20px;
+}
+.ic-24 {
+  width: 24px;
+}
+.ic-28 {
+  width: 28px;
+}
+
+.notify-current-df {
+  position: fixed;
+  top: 200px;
+  z-index: 10000;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  left: calc(50% - 150px);
+  display: none;
+  background: #4285f4;
+  border-radius: 0px;
+  box-shadow: 1px 1px 0 rgba(199, 196, 191, 0.62), 1px 1px 3px rgba(210, 207, 202, 0.73);
+  -webkit-box-shadow: 1px 1px 0 rgba(199, 196, 191, 0.62), 1px 1px 3px rgba(210, 207, 202, 0.73);
+  -moz-box-shadow: 1px 1px 0 rgba(199, 196, 191, 0.62), 1px 1px 3px rgba(210, 207, 202, 0.73);
+  width: 300px !important;
+  border-radius: 30px;
+}
+
+// /* css modal */
+// .modal-custom-df .modal-header {
+//   border-bottom: 1px solid #eaeaea;
+//   margin: 0 15px;
+//   padding: 20px 0;
+// }
+
+// .modal-custom-df .modal-footer {
+//   border-top: none;
+//   padding-bottom: 20px;
+// }
+
+// .modal-custom-df .modal-footer button {
+//   border-radius: 20px;
+//   color: #fff;
+//   min-width: 80px;
+//   height: 36px;
+// }
+
+// .modal-custom-df .modal-footer .btn-cancel {
+//   background-color: #ccc;
+// }
+// /*  */

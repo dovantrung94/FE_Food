@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService {
     baseUrlServer: string;
 
-    constructor(private httpClient: HttpClient,@Inject('BASE_URL') baseUrl: string) { 
+    constructor(private httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.baseUrlServer = baseUrl;
     }
 

@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="box">
     <label for="userName" class="info-label">Username</label>
     <input placeholder="name" type="text" name="userName" formControlName="userName" required>
@@ -15,4 +15,47 @@
     </div>
   </div>
 
-</form>
+</form> -->
+
+<div class="screen-login">
+  <div class="box-content">
+
+      <div class="tt-main">
+          <span>Đăng nhập tài khoản</span>
+      </div>
+      <div>
+          <form [formGroup]="dataLogin">
+              <div class="form-group box-input">
+                  <img class="ic-16 ic-input" src="../../../../assets/images/ic_envelope.png" alt="ic email">
+                  <input type="text" formControlName="email" placeholder="Press email..." class="form-control" [ngClass]="{'input-err-df': submitted && ckLogin.email.errors }" />
+                  <div *ngIf="submitted && ckLogin.email.errors" class="txt-err-df ck-err">
+                      <div *ngIf="ckLogin.email.errors.required" class="email-required">Bạn chưa nhập địa chỉ email</div>
+                      <div *ngIf="ckLogin.email.errors.email" class="format-email">Không đúng định dạng email</div>
+                  </div>
+              </div>
+              <div class="form-group box-input">
+                  <img class="ic-16 ic-input" src="../../../../assets/images/ic_key.png" alt="ic password">
+                  <input type="password" formControlName="password" placeholder="Press password..." class="form-control"
+                      [ngClass]="{ 'input-err-df': submitted && ckLogin.password.errors }" (keydown)="enterLogin($event)" />
+                  <div *ngIf="submitted && ckLogin.password.errors" class="txt-err-df ck-err">
+                      <div *ngIf="ckLogin.password.errors.required">Cần nhập mật khẩu</div>
+                      <div *ngIf="ckLogin.password.errors.minlength">Mật khẩu phải nhiều hơn hoặc bằng 6 ký tự.</div>
+                  </div>
+                  <p class="txt-err-df ck-err">{{ notiErr }}</p>
+              </div>
+
+              <div class="txt-center">
+                  <button type="button" class="btn-login" (click)="loginWithEmail()">Đăng nhập</button>
+              </div>
+          </form>
+
+          <div class="line-bottom">
+              <a class="link-register" routerLink="/register">Đăng ký tài khoản mới</a>
+              <a class="link-reset" (click)="resetPassword()">Quên mật khẩu, lấy lại</a>
+          </div>
+
+      </div>
+  </div>
+</div>
+<!-- <app-retrieval-pass></app-retrieval-pass> -->
+

@@ -33,11 +33,19 @@ export class AppComponent {
                 this.route = '/login';
             }
 
-            if (this.route === '/login') {
+            if (this.route === '/login' || this.route === '/register') {
                 this.showMenu = false;
             } else {
                 this.showMenu = true;
 
+            }
+
+            if (val instanceof NavigationEnd) {
+                if (val.url == '/login' || val.url == '/register' || val.url == '/') {
+                    document.body.style.backgroundImage  = 'url(assets/images/bg_login.jpg)';
+                } else {
+                    document.body.style.background = '#F4F4F4';
+                }
             }
         });
     }
