@@ -6,5 +6,6 @@ import { Injectable } from '@angular/core';
 export class CommonService {
 
     inforUser = null;
+    checkAdmin = false;
     constructor() { }
 }

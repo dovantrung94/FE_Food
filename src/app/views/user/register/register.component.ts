@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { CommonService } from '../../../service/common.service';
 
+declare var $: any;
+
 
 @Component({
   selector: 'app-register',
@@ -45,6 +47,13 @@ export class RegisterComponent implements OnInit {
     }
     get ckRegister() {
         return this.dataRegister.controls;
+    }
+
+
+    enterRegister(event) {
+        if (event.key === "Enter") {
+            this.goRegister();
+        }
     }
 
     goRegister() {

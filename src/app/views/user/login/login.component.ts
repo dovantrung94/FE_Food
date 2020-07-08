@@ -201,9 +201,9 @@ export class LoginComponent implements OnInit {
     //     }
     // }
 
-    // resetPassword() {
-    //     $('#resetPassword').modal('show');
-    // }
+    resetPassword() {
+        // $('#resetPassword').modal('show');
+    }
 
     // ngOnDestroy() {
     //     //unsubscribe

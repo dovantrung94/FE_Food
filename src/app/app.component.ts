@@ -11,7 +11,7 @@ export class AppComponent {
     title = 'TrungProject';
     route: string;
     url;
-    showMenu;
+    showMenu = 'none'
 
     constructor(
         location: Location,
@@ -33,18 +33,19 @@ export class AppComponent {
                 this.route = '/login';
             }
 
-            if (this.route === '/login' || this.route === '/register') {
-                this.showMenu = false;
+            if (this.route.indexOf('admin') != -1) {
+                this.showMenu = 'admin';
+            } else if (this.route.indexOf('home') != -1){
+                this.showMenu = 'user';
             } else {
-                this.showMenu = true;
-
+                this.showMenu = 'none';
             }
 
             if (val instanceof NavigationEnd) {
                 if (val.url == '/login' || val.url == '/register' || val.url == '/') {
                     document.body.style.backgroundImage  = 'url(assets/images/bg_login.jpg)';
                 } else {
-                    document.body.style.background = '#F4F4F4';
+                    document.body.style.background = 'white';
                 }
             }
         });

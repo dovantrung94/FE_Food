@@ -7,20 +7,6 @@ import { HomeComponent } from './home.component';
 import { Routes, RouterModule } from "@angular/router";
 
 
-// const routes: Routes = [
-//   {
-//       path: '',
-//       // component: HomePageComponent,
-//       canActivate: [AuthGuard],
-//       children: [
-//           {
-//               path: '',
-//               component: HomeComponent
-//           }
-//       ]
-//   }
-// ]
-
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'dashboard', component: DashboardComponent}

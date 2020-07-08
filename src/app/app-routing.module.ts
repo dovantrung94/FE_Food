@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./views/home/home.module').then( m => m.HomeModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./views/admin/admin.module').then( m => m.AdminModule)
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '**', redirectTo: 'login'},
