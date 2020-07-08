@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.dataLogin = this.formBuilder.group({
-            'email'     : new FormControl('', [ Validators.required, Validators.email]),
+            'email'     : new FormControl('', [ Validators.required]),
             'password'  : new FormControl('', [ Validators.required, Validators.minLength(6)])
         });
         this.dataLogin.valueChanges.subscribe(data => this.notiErr = '');

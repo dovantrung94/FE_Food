@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './views/user/register/register.component';
+import * as $ from 'jquery';
+import { ProductComponent } from './views/admin/product/product.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { RegisterComponent } from './views/user/register/register.component';
     LoginComponent,
     MenuLeftComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
