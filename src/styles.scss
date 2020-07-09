@@ -1,3 +1,10 @@
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// @import "bootstrap/scss/mixins";
+
+@import "~@coreui/coreui/scss/variables";
+
 body {
     background-color: #f4f4f4;
     color: #4f4f4f;
