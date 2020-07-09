@@ -1,9 +1,7 @@
-<div class="menu-left col-md-3" *ngIf="showMenu == 'admin'">
-    <app-menu-left></app-menu-left>
-</div>
+
 <div *ngIf="showMenu == 'user'">
     <app-header></app-header>
 </div>
-<div [ngClass]="showMenu == 'none' ? 'col-md-12' : showMenu == 'admin' ? 'col-md-9' : 'box-content-df'">
+<div [ngClass]="showMenu == 'none' ? 'col-md-12' : showMenu == 'admin' ? 'admin_page' : 'box-content-df'">
     <router-outlet></router-outlet>
 </div>

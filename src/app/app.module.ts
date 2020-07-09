@@ -1,3 +1,4 @@
+import { NavbarComponent } from './views/navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,7 +9,6 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/user/login/login.component';
-import { MenuLeftComponent } from './views/menu-left/menu-left.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +21,7 @@ import { HeaderComponent } from './views/header/header.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuLeftComponent,
+    NavbarComponent,
     DashboardComponent,
     RegisterComponent,
     HeaderComponent
