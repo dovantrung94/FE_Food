@@ -31,4 +31,30 @@
             </a>
         </div>
     </div>
+    <div class="list-product">
+        <div class="col-md-3 col-xs-4 col-sm-2 box-item" *ngFor="let item of listProduct">
+            <div class="item-product" (click)="goDetail()">
+                <div class="image-product">
+                    <img src="../../../assets/images/{{ item.image }}"/>
+                </div>
+                <div class="infor-product">
+                    <div class="txt-type">
+                        {{ item.type }}
+                    </div>
+                    <div class="txt-name">
+                        {{ item.name }}
+                    </div>
+                    <div class="txt-bottom">
+                        <span class="txt-price">${{ item.price }}</span>
+                        <span class="txt-add">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            Add to cart
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
