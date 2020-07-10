@@ -1,6 +1,6 @@
 <div class="main_product">
  <form class="main_form"  novalidate (ngSubmit)="onSubmit()" [formGroup]="productFrom" class="row justify-content-md-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">
           Product Name:
@@ -37,7 +37,7 @@
       <div class="form-group row">
         <label for="file">Image</label>
         <div class="col-10">
-          <input  id="file" type="file" class="form-control" (change)="onFileChange($event)">
+          <input type="file" class="form-control-file" id="exampleFormControlFile1">
         </div>
 
       </div>
