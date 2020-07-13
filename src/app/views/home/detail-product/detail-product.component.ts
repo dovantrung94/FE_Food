@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -8,9 +9,12 @@ declare var $: any;
 })
 export class DetailProductComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+      private router: Router
+    ) { }
 
     typeChoose = 1;
+    numberProduct = 1;
 
     ngOnInit(): void {
     }
@@ -20,6 +24,22 @@ export class DetailProductComponent implements OnInit {
         $('.choose-item').removeClass('choose-active');
         $('.choose-' + value).addClass('choose-active');
 
+    }
+
+    addToCard () {
+        this.router.navigate(['home/pay']);
+    }
+
+    changeItem (value) {
+        if (value == 'sub') {
+            if (this.numberProduct > 1) {
+                this.numberProduct --;
+            } else {
+                this.numberProduct = 1;
+            }
+        } else {
+            this.numberProduct ++;
+        }
     }
 
 }

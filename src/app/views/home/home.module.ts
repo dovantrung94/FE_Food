@@ -6,18 +6,23 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { Routes, RouterModule } from "@angular/router";
 import { DetailProductComponent } from './detail-product/detail-product.component';
+import { PayComponent } from './pay/pay.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'dashboard', component: DashboardComponent},
-  { path: 'detail-product', component: DetailProductComponent}
+  { path: 'detail-product', component: DetailProductComponent},
+  { path: 'pay', component: PayComponent},
+  { path: 'confirm', component: ConfirmComponent}
+
 
 ];
 
 
 @NgModule({
-  declarations: [HomeComponent, DetailProductComponent],
+  declarations: [HomeComponent, DetailProductComponent, PayComponent, ConfirmComponent],
   imports: [
     CommonModule,
     ShareModule,
