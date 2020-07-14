@@ -1,10 +1,10 @@
 
-<div class="screen-detail">
+<div class="screen-detail mgt-content-df">
     <div class="box-product row">
-        <div class="col-md-6 box-image">
+        <div class="col-6 box-image">
             <img src="../../../../assets/images/product1.jpg"/>
         </div>
-        <div class="col-md-6 box-infor">
+        <div class="col-6 box-infor">
             <div class="txt-name">
                 Smoked Ham
             </div>
@@ -20,9 +20,11 @@
             </div>
             <div class="box-add-cart">
                 <div class="number-product">
-                    1
+                    <div class="change-item sub-item" (click)="changeItem('sub')">-</div>
+                    {{ numberProduct }}
+                    <div class="change-item add-more" (click)="changeItem('add')">+</div>
                 </div>
-                <div class="btn-add-cart">
+                <div class="btn-add-cart" (click)="addToCard()">
                     Add to cart
                 </div>
             </div>

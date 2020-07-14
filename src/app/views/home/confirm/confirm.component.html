@@ -1,0 +1,79 @@
+<div class="screen-confirm mgt-content-df">
+    <p class="tt-main-df">Thông tin đơn hàng</p>
+    <div class="content-confirm">
+        <form [formGroup]="dataConfirm">
+            <div class="row box-item">
+                <div class="col-1"></div>
+                <div class="col-3 txt-title">Tên người nhận </div>
+                <div class="col-7 box-infor">
+                    <div class="form-group">
+                        <input type="text" formControlName="name" class="form-control" [ngClass]="{'input-err-df': submitted && ckConfirm.name.errors }" />
+                        <div *ngIf="submitted && ckConfirm.name.errors" class="txt-err-df ck-err">
+                            <div *ngIf="ckConfirm.name.errors.required" class="email-required">Nhập tên người nhận</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+
+            <div class="row box-item">
+                <div class="col-1"></div>
+                <div class="col-3 txt-title">Số điện thoại </div>
+                <div class="col-7 box-infor">
+
+                    <div class="form-group">
+                        <input type="text" formControlName="phone" class="form-control"
+                            [ngClass]="{ 'input-err-df': submitted && ckConfirm.phone.errors }" />
+                        <div *ngIf="submitted && ckConfirm.phone.errors" class="txt-err-df ck-err">
+                            <div *ngIf="ckConfirm.phone.errors.required">Nhập số điện thoại</div>
+                            <div *ngIf="ckConfirm.phone.errors.pattern || ckConfirm.phone.errors.minLength">Số điện thoại không hợp lệ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row box-item">
+                <div class="col-1"></div>
+                <div class="col-3 txt-title">Địa chỉ nhận hàng </div>
+                <div class="col-7 box-infor">
+                    <div class="form-group">
+                        <input type="address" formControlName="address" class="form-control"
+                            [ngClass]="{ 'input-err-df': submitted && ckConfirm.address.errors }" />
+                        <div *ngIf="submitted && ckConfirm.address.errors" class="txt-err-df ck-err">
+                            <div *ngIf="ckConfirm.address.errors.required">Nhập địa chỉ nhận hàng</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row box-item">
+                <div class="col-1"></div>
+                <div class="col-3 txt-title">Email </div>
+                <div class="col-7 box-infor">
+                    <div class="form-group">
+                        <input type="email" formControlName="email" class="form-control"
+                            [ngClass]="{ 'input-err-df': submitted && ckConfirm.email.errors }" />
+                        <div *ngIf="submitted && ckConfirm.email.errors" class="txt-err-df ck-err">
+                            <div *ngIf="ckConfirm.email.errors.required">Nhập email</div>
+                            <div *ngIf="ckConfirm.email.errors.email" class="format-email">Không đúng định dạng email</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+
+            </div>
+            <div class="row box-money">
+                <div class="col-1"></div>
+                <div class="col-3 txt-total txt-title">Tổng </div>
+                <div class="col-7 txt-money"> 123.000đ</div>
+                <div class="col-1"></div>
+            </div>
+            <div class="box-submit">
+                <button type="button" class="btn-submit" (click)="confirm()">Đặt hàng</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

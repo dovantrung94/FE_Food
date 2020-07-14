@@ -93,27 +93,10 @@ button:focus {
   width: 300px !important;
   border-radius: 30px;
 }
-
-// /* css modal */
-// .modal-custom-df .modal-header {
-//   border-bottom: 1px solid #eaeaea;
-//   margin: 0 15px;
-//   padding: 20px 0;
-// }
-
-// .modal-custom-df .modal-footer {
-//   border-top: none;
-//   padding-bottom: 20px;
-// }
-
-// .modal-custom-df .modal-footer button {
-//   border-radius: 20px;
-//   color: #fff;
-//   min-width: 80px;
-//   height: 36px;
-// }
-
-// .modal-custom-df .modal-footer .btn-cancel {
-//   background-color: #ccc;
-// }
-// /*  */
+.mgt-content-df {
+  margin-top: 180px;
+}
+.tt-main-df {
+  font-size: 28px;
+  font-weight: 600;
+}
