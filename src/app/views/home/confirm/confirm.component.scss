@@ -1,0 +1,40 @@
+.screen-confirm {
+  margin-bottom: 80px;
+}
+.content-confirm {
+  margin-top: 50px;
+}
+
+.txt-title {
+  font-weight: 600;
+}
+
+.box-infor input {
+  height: 40px;
+}
+.content-confirm .txt-total {
+  color: green;
+}
+
+.txt-money {
+  font-size: 24px;
+  color: red;
+}
+
+.btn-submit {
+  width: 120px;
+  height: 40px;
+  border: 1px solid #e4e7ea;
+  color: white;
+  background-color: red;
+  border-radius: 3px;
+}
+.box-submit {
+  text-align: center;
+  margin-top: 30px;
+}
+@media only screen and (min-width: 1200px) {
+    .screen-confirm {
+        width: 1200px;
+    }
+}
