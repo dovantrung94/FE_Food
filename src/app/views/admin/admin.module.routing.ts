@@ -5,6 +5,7 @@ import { ProductComponent } from './product/product.component';
 import { Routes, RouterModule, Router } from "@angular/router";
 
 import { NgModule } from '@angular/core';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
     {
@@ -15,6 +16,10 @@ const routes: Routes = [
                 path: '',
                 component: ProductComponent
             },
+            {
+                path:'category',
+                component: CategoryComponent
+            }, 
             {
                 path:'user',
                 component: UserComponent
