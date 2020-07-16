@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -13,6 +13,13 @@ export class CategoryService {
     }
 
     getAllCategory():Observable<any>{
-        return this.httpClient.get<any>(this.baseUrlServer + "category")
+        debugger;
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token"));
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer + "category",options)
     }
+
+  
 }

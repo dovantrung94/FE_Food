@@ -23,5 +23,7 @@ export class CategoryComponent implements OnInit {
       }
     )
   }
-
+  createCategory(){
+    
+  }
 }
