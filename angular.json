@@ -28,12 +28,14 @@
               "src/assets"
             ],
             "styles": [
+              {"input": "./node_modules/bootstrap/dist/css/bootstrap.min.css"},
               {"input": "src/styles.scss"},
               {"input": "node_modules/simple-line-icons/css/simple-line-icons.css"},
               {"input": "node_modules/ngx-toastr/toastr.css"}
             ],
             "scripts": [
-              {"input": "./node_modules/jquery/dist/jquery.min.js"}
+              {"input": "./node_modules/jquery/dist/jquery.min.js"},
+              {"input": "./node_modules/bootstrap/dist/js/bootstrap.min.js"}
             ]
           },
           "configurations": {

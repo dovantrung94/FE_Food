@@ -1,3 +1,4 @@
+import { CategoryComponent } from './category/category.component';
 import { ShareModule } from './../../share.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -30,7 +31,7 @@ import { from } from 'rxjs';
 
 
 @NgModule({
-  declarations: [AdminComponent, ProductComponent, UserComponent],
+  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent],
   imports: [
     CommonModule,
     ShareModule,
@@ -41,7 +42,8 @@ import { from } from 'rxjs';
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    RouterModule
   ]
 })
 export class AdminModule { }
