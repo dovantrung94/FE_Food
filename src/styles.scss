@@ -100,3 +100,15 @@ button:focus {
   font-size: 28px;
   font-weight: 600;
 }
+
+@media only screen and (max-width: 1200px) {
+  .box-content-df {
+    padding: 0 8px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .mgt-content-df {
+    margin-top: 220px;
+  }
+}

@@ -97,3 +97,19 @@
   background-color: white;
   padding-bottom: 20px;
 }
+
+@media only screen and (max-width: 1024px) {
+  .box-search{
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .box-search {
+    display: block;
+    margin-left: 0;
+  }
+  .box-store {
+    top: 80px;
+  }
+}

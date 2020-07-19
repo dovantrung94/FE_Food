@@ -115,8 +115,17 @@ th, td {
 .tb-product {
   border: 1px solid #ddd;
 }
+
+
+@media only screen and (max-width: 1200px) {
+  .tb-product {
+    width: 100vw;
+  }
+}
+
 @media only screen and (min-width: 1200px) {
   .tb-product {
     width: 1200px;
   }
 }
+
