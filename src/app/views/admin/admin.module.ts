@@ -10,6 +10,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AdminRoutingModule } from './admin.module.routing';
+import * as bootstrap from "bootstrap";
+import * as $ from "jquery";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -42,8 +44,7 @@ import { from } from 'rxjs';
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
-    AdminRoutingModule,
-    RouterModule
+    AdminRoutingModule
   ]
 })
 export class AdminModule { }

@@ -17,11 +17,11 @@ export class LoginService {
 
   login(userName: string, passWord: string): Observable<any> {
   
-        this.user={
-            username:userName,
-            password: passWord,
-            id: 1
-        }
+        // this.user={
+        //     username:userName,
+        //     password: passWord,
+        //     id: 1
+        // }
         const headers = { 'content-type': 'application/json'}  
         const body=JSON.stringify(this.user);
         return this.httpClient.post<any>(this.baseUrlServer + 'authenticate',body,{'headers':headers});
