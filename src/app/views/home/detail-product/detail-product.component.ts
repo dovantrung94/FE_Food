@@ -5,7 +5,7 @@ declare var $: any;
 @Component({
   selector: 'app-detail-product',
   templateUrl: './detail-product.component.html',
-  styleUrls: ['./detail-product.component.scss']
+  styleUrls: ['./detail-product.component.scss', '../home.component.scss']
 })
 export class DetailProductComponent implements OnInit {
 
@@ -15,6 +15,67 @@ export class DetailProductComponent implements OnInit {
 
     typeChoose = 1;
     numberProduct = 1;
+
+    listProduct = [
+      {
+          id : 1,
+          name : "Smoked Ham",
+          type : "Products",
+          price: 8.53,
+          image: "product1.jpg"
+      },
+      {
+          id : 2,
+          name : "Sweet Oranges",
+          type : "Fresh Fruits, Product",
+          price: 8.53,
+          image: "product2.jpg"
+      },
+      {
+          id : 3,
+          name : "Smoked Ham",
+          type : "Products",
+          price: 8.53,
+          image: "product2.jpg"
+      },
+      {
+          id : 4,
+          name : "Smoked Ham",
+          type : "Products",
+          price: 8.53,
+          image: "product1.jpg"
+      },
+      {
+          id : 5,
+          name : "Smoked Ham",
+          type : "Products",
+          price: 8.53,
+          image: "product2.jpg"
+      },
+      {
+          id : 6,
+          name : "Smoked Ham",
+          type : "Products",
+          price: 8.53,
+          image: "product1.jpg"
+      },
+      {
+          id : 7,
+          name : "Smoked Ham",
+          type : "Products",
+          price: 8.53,
+          image: "product2.jpg"
+      },
+      {
+          id : 8,
+          name : "Smoked Ham",
+          type : "Products",
+          price: 8.53,
+          image: "product1.jpg"
+      },
+
+  ]
+
 
     ngOnInit(): void {
     }
