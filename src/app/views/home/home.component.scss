@@ -1,49 +1,91 @@
 .box-slide {
     margin-top: 16px;
+    height: 380px;
 }
-.image-product img {
+#myCarousel {
+  height: 380px;
+}
+
+#myCarousel img {
   width: 100%;
+  height: 380px;
 }
-
-.item-product {
-  border: 1px solid #eaeaea;
-  padding : 20px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.list-product {
+.list-product-df {
   margin: 12px -10px 12px -10px;
+  .image-product img {
+    width: 100%;
+  }
+
+  .item-product {
+    border: 1px solid #eaeaea;
+    padding : 20px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+
+  .box-item {padding: 10px;}
+
+  .infor-product .txt-type {
+    color: gray;
+  }
+
+  .infor-product .txt-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .infor-product .txt-bottom {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .item-product:hover .txt-price {
+    display: none;
+  }
+  .item-product:hover .txt-add {
+    display: block;
+    color: green;
+  }
+  .item-product .txt-add {
+    display: none;
+  }
+  .item-product:hover {
+    box-shadow: 0px 0px 17px 0px rgba(0, 0, 6, 0.1);
+  }
 }
 
-.box-item {padding: 10px;}
-
-.infor-product .txt-type {
-  color: gray;
+.content-slide {
+  position: absolute;
+  top: 28px;
+  left: 110px;
+  color: white;
 }
 
-.infor-product .txt-name {
-  font-size: 16px;
+.tt-slide {
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.des-slide {
   font-weight: 600;
-  margin-top: 8px;
+  font-size: 15px;
+  margin-top: 16px;
 }
 
-.infor-product .txt-bottom {
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: 600;
+.btn-slide {
+  height: 48px;
+  background-color: #474747;
+  text-align: center;
+  width: 150px;
+  line-height: 48px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 28px;
 }
 
-.item-product:hover .txt-price {
-  display: none;
-}
-.item-product:hover .txt-add {
-  display: block;
-  color: green;
-}
-.item-product .txt-add {
-  display: none;
-}
-.item-product:hover {
-  box-shadow: 0px 0px 17px 0px rgba(0, 0, 6, 0.1);
+.btn-slide:hover {
+  opacity: 0.6;
 }
