@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { error } from '@angular/compiler/src/util';
 import { Category } from './../../../model/category';
 import { ToastService } from './../../../service/toast.service';
@@ -16,7 +17,11 @@ export class CategoryComponent implements OnInit {
   categorys=[];
   category=new Category();
   editCategoryForm: FormGroup;
-  constructor(private categoryService :CategoryService,private modalService: NgbModal,private toastService:ToastService) { }
+  constructor(private categoryService :CategoryService,
+    private modalService: NgbModal,
+    private toastService:ToastService,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategory().subscribe(
@@ -26,7 +31,11 @@ export class CategoryComponent implements OnInit {
         this.categorys = data;
       },
       error=>{
-        console.log(error);
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
       }
     )
 

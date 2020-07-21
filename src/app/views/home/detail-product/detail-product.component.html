@@ -2,21 +2,17 @@
 <div class="screen-detail mgt-content-df">
     <div class="box-product row">
         <div class="col-6 box-image">
-            <img src="../../../../assets/images/product1.jpg"/>
+            <img src="../../../../assets/product/{{productDetail.url}}"/>
         </div>
         <div class="col-6 box-infor">
             <div class="txt-name">
-                Smoked Ham
+                {{productDetail.name}}
             </div>
             <div class="txt-price">
-                $8.35
+                {{productDetail.price}}
             </div>
             <div class="txt-intro">
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas vitae viverra risus.
-                Vivamus eget accumsan elit, tincidunt pharetra orci. Maecenas neque mi, porttitor eu ullamcorper nec,
-                aliquet eu nulla. Mauris maximus turpis tellus, vel aliquam neque aliquet accumsan. Maecenas ultrices facilisis
-                libero, eu laoreet mauris. Integer non aliquam sapien, ut auctor sem. Vivamus urna urna, eleifend eget augue sed,
-                pulvinar rutrum enim. Nullam lacinia mauris vel mattis lacinia.
+                {{productDetail.content}}
             </div>
             <div class="box-add-cart">
                 <div class="number-product">
@@ -74,11 +70,11 @@
         <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of listProduct">
             <div class="item-product" (click)="goDetail()">
                 <div class="image-product">
-                    <img src="../../../assets/images/{{ item.image }}"/>
+                    <img src="../../../assets/product/{{ item.url }}"/>
                 </div>
                 <div class="infor-product">
                     <div class="txt-type">
-                        {{ item.type }}
+                        {{ item.categoryName }}
                     </div>
                     <div class="txt-name">
                         {{ item.name }}
@@ -95,4 +91,5 @@
             </div>
         </div>
     </div>
+
 </div>

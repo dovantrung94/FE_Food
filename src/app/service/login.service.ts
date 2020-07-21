@@ -10,20 +10,19 @@ import { error } from '@angular/compiler/src/util';
 
 export class LoginService {
     baseUrlServer: string;
-    user: User;
+    // user: User;
     constructor(private httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string) { 
         this.baseUrlServer = baseUrl;
     }
 
-  login(userName: string, passWord: string): Observable<any> {
-  
-        // this.user={
-        //     username:userName,
-        //     password: passWord,
-        //     id: 1
-        // }
+  login(email: string, passWord: string): Observable<any> {
+        
+        let user = { email : email ,
+            password : passWord
+        };
+
         const headers = { 'content-type': 'application/json'}  
-        const body=JSON.stringify(this.user);
+        const body=JSON.stringify(user);
         return this.httpClient.post<any>(this.baseUrlServer + 'authenticate',body,{'headers':headers});
     }   
 

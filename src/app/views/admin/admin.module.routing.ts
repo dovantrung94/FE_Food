@@ -1,3 +1,5 @@
+import { LogoutComponent } from './logout/logout.component';
+import { AuthGuard } from './../../guard/auth.guard';
 import { AdminComponent } from './admin.component';
 import { UserComponent } from './user/user.component';
 import { ProductComponent } from './product/product.component';
@@ -11,6 +13,7 @@ const routes: Routes = [
     {
         path: '',
         component: AdminComponent,
+        canActivate : [AuthGuard],
         children: [
             {
                 path: '',
@@ -23,6 +26,10 @@ const routes: Routes = [
             {
                 path:'user',
                 component: UserComponent
+            },
+            {
+                path:'logout',
+                component: LogoutComponent
             }
         ]
     }

@@ -8,7 +8,13 @@ export const navItems: INavData[] = [
     badge: {
       variant: 'info',
       text: 'NEW'
-    }
+    },
+    children: [{
+      name: 'a',
+      url: 'http://localhost:4200/admin/category',
+      icon: 'icon-layers',
+      attributes: { disabled: false },
+    }]
   },
   {
     name: 'Category',
@@ -19,6 +25,12 @@ export const navItems: INavData[] = [
   {
     name: 'User',
     url: 'http://localhost:4200/admin/user',
+    icon: 'icon-user',
+    attributes: { disabled: false },
+  },
+  {
+    name: 'Logout',
+    url: 'http://localhost:4200/admin/logout',
     icon: 'icon-user',
     attributes: { disabled: false },
   }

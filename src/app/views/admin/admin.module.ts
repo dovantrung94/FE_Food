@@ -1,3 +1,4 @@
+import { LogoutComponent } from './logout/logout.component';
 import { CategoryComponent } from './category/category.component';
 import { ShareModule } from './../../share.module';
 import { NgModule } from '@angular/core';
@@ -33,7 +34,7 @@ import { from } from 'rxjs';
 
 
 @NgModule({
-  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent],
+  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent,LogoutComponent],
   imports: [
     CommonModule,
     ShareModule,

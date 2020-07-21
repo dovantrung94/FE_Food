@@ -14,7 +14,7 @@ export class CategoryService {
     }
 
     getAllCategory():Observable<any>{
-        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token"));
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {
             headers: headers
         };
@@ -23,7 +23,7 @@ export class CategoryService {
     
     createCategory(category:Category):Observable<any>{
         debugger;
-        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token"));
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {
             headers: headers
         };
@@ -32,7 +32,7 @@ export class CategoryService {
 
     updateCategory(category:Category):Observable<any>{
         debugger;
-        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token"));
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {
             headers: headers
         };

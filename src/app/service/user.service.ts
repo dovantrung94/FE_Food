@@ -14,7 +14,7 @@ export class UserService {
     }
 
     getAllUser():Observable<User[]>{
-        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token"));
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {
             headers: headers
         };
