@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
   categorys=[];
   productFrom : FormGroup;
 
-  image:string;
+  image:File;
   
   constructor(private productService :ProductService,private categoryService :CategoryService,private toastService:ToastService) { }
 
@@ -42,7 +42,8 @@ export class ProductComponent implements OnInit {
       weight: new FormControl(),
       color:new FormControl(),
       composition:new FormControl(),
-      volume:new FormControl()
+      volume:new FormControl(),
+      description:new FormControl()
     });
   }
 
@@ -50,14 +51,7 @@ export class ProductComponent implements OnInit {
      debugger;
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.productService.uploadImageProduct(file).subscribe(
-        data =>{
-          this.image=data.url;
-        },
-        error=>{
-          this.toastService.showError("Image","Upload image Error");
-        }
-      )
+      this.image=file;
     }
   }
 
@@ -65,16 +59,25 @@ export class ProductComponent implements OnInit {
     debugger;
     console.log(this.productFrom);
     this.product =Object.assign(this.product,this.productFrom.value);
-    this.product.url=this.image;
-    this.productService.createProduct(this.product).subscribe(
+    this.productService.uploadProduct(this.product,this.image).subscribe(
       data =>{
         debugger;
         console.log(data);
       },
       error=>{
-        console.log(error);
+        this.toastService.showError("Image","Upload image Error");
       }
     )
+
+    // this.productService.createProduct(this.product).subscribe(
+    //   data =>{
+    //     debugger;
+    //     console.log(data);
+    //   },
+    //   error=>{
+    //     console.log(error);
+    //   }
+    // )
   }
 
 

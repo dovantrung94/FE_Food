@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.body.style.background = '#e4e5e6';
   }
 
 }

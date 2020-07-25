@@ -1,3 +1,4 @@
+import { DataService } from './../../service/data.service';
 import { ProductService } from './../../service/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -76,7 +77,7 @@ export class HomeComponent implements OnInit {
         private productService: ProductService,
         public commonServ : CommonService,
         private router: Router,
-        
+        private dataService:DataService
     ) { }
 
     ngOnInit(): void {
@@ -88,12 +89,11 @@ export class HomeComponent implements OnInit {
               console.log(error);
             }
           )
-
-
-
     }
 
-    goDetail() {
+    goDetail(id) {
+      debugger;
+        this.dataService.changeProductId(id);
         this.router.navigate(['home/detail-product']);
     }
 

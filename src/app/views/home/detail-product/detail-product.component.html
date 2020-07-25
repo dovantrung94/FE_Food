@@ -20,7 +20,7 @@
                     {{ numberProduct }}
                     <div class="change-item add-more" (click)="changeItem('add')">+</div>
                 </div>
-                <div class="btn-add-cart" (click)="addToCard()">
+                <div class="btn-add-cart" (click)="addToCard(productDetail.id)">
                     Add to cart
                 </div>
             </div>
@@ -37,26 +37,37 @@
             <div class="choose-item choose-2" (click)="changeChoose(2)">
                 ADDITIONAL INFORMATION
             </div>
+            <div class="choose-item choose-3" (click)="changeChoose(3)">
+                REVIEW
+            </div>
         </div>
         <div class="infor-choose">
             <div *ngIf="typeChoose == 1">
-                Morbi non accumsan libero, volutpat ullamcorper odio. Donec non libero id augue suscipit commodo.
-                Curabitur porta ac ligula vel sollicitudin. Praesent vestibulum tellus urna, in imperdiet neque lobortis eleifend.
-                Nunc eros nulla, porta quis urna nec, luctus viverra diam. In ut ante est. Duis venenatis erat ac nisl malesuada gravida.
-                Pellentesque pellentesque tempor urna, quis vehicula mi mollis hendrerit.
-                Etiam iaculis convallis arcu, id lacinia massa imperdiet vitae.
+                {{productDetail.description}}
             </div>
             <div *ngIf="typeChoose == 2">
                 <table>
-                    <tr>
+                    <tr *ngIf ="productDetail.weight !=null">
                         <td class="txt-main">Weight</td>
-                        <td class="txt-infor">1 kg</td>
+                        <td class="txt-infor">{{productDetail.weight}}</td>
                     </tr>
-                    <tr>
-                        <td class="txt-main">Сomposition</td>
-                        <td class="txt-infor">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</td>
+                    <tr *ngIf ="productDetail.color !=null">
+                        <td class="txt-main">Color</td>
+                        <td class="txt-infor">{{productDetail.color}}</td>
                     </tr>
+                    <tr *ngIf ="productDetail.composition !=null">
+                        <td class="txt-main">Composition</td>
+                        <td class="txt-infor">{{productDetail.composition}}</td>
+                    </tr>
+                    <tr *ngIf ="productDetail.volume !=null">
+                        <td class="txt-main">Volume</td>
+                        <td class="txt-infor">{{productDetail.volume}}</td>
+                    </tr>
+    
                 </table>
+            </div>
+            <div *ngIf="typeChoose == 3">
+        
             </div>
         </div>
     </div>

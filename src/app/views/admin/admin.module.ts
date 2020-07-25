@@ -31,10 +31,12 @@ import {
 } from '@coreui/angular';
 import { UserComponent } from './user/user.component';
 import { from } from 'rxjs';
+import { OrderComponent } from './order/order.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent,LogoutComponent],
+  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent,LogoutComponent, OrderComponent, ProductListComponent],
   imports: [
     CommonModule,
     ShareModule,

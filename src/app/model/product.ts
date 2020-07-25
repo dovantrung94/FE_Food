@@ -12,5 +12,7 @@ export class Product {
     weight:number;
     volume:number;
     composition:string;
+    description:string;
+    color:string;
     image:File;
 }

@@ -1,7 +1,11 @@
+import { ToastService } from './../../../service/toast.service';
+import { CartService } from './../../../service/cart.service';
+import { DataService } from './../../../service/data.service';
 import { Product } from './../../../model/product';
 import { ProductService } from './../../../service/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cart } from 'src/app/model/cart';
 declare var $: any;
 
 @Component({
@@ -10,22 +14,28 @@ declare var $: any;
   styleUrls: ['./detail-product.component.scss', '../home.component.scss']
 })
 export class DetailProductComponent implements OnInit {
-    
+    id:number;
     constructor(
       private router: Router,
-      private productService:ProductService
-    ) { }
+      private productService:ProductService,
+      private dataService:DataService,
+      private cartService:CartService,
+      private toastService:ToastService
+    ) { 
+      this.dataService.id.subscribe(productId => this.id = productId);
+    }
     productDetail : any;
     typeChoose = 1;
     numberProduct = 1;
     listProduct =[];
+    cart = new Cart();
 
 
 
     ngOnInit(): void {
-        this.productService.getProductDetail(4).subscribe(
+        this.productService.getProductDetail(this.id).subscribe(
             data =>{
-                debugger;
+              debugger;
               this.productDetail=data;
             },
             error=>{
@@ -49,8 +59,18 @@ export class DetailProductComponent implements OnInit {
 
     }
 
-    addToCard () {
-        this.router.navigate(['home/pay']);
+    addToCard (id) {
+        this.cart.productId=id;
+        this.cart.quantity=this.numberProduct;
+        this.cartService.addProductToCart(this.cart).subscribe(
+          data =>{
+            debugger;
+            this.toastService.showSuccess("Success","Thêm vào giỏ hàng thành công");
+          },
+          error=>{
+            this.toastService.showError("Cart","Thêm vào giỏ hàng thất bại");
+          }
+        )
     }
 
     changeItem (value) {

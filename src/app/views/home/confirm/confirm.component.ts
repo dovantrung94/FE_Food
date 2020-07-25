@@ -1,3 +1,8 @@
+import { Order } from './../../../model/order';
+import { ToastService } from './../../../service/toast.service';
+import { error } from '@angular/compiler/src/util';
+import { data } from 'jquery';
+import { OrderService } from './../../../service/order.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,11 +20,13 @@ export class ConfirmComponent implements OnInit {
     dataConfirm: FormGroup;
     notiErr = '';
     submitted = false;
-
+    order=new Order();
 
     constructor(
         private router      : Router,
         private formBuilder : FormBuilder,
+        private orderService:OrderService,
+        private toastService:ToastService
     ) { }
 
     ngOnInit(): void {
@@ -37,6 +44,16 @@ export class ConfirmComponent implements OnInit {
 
     confirm () {
         this.submitted = true;
+        this.order=Object.assign(this.order,this.dataConfirm.value);
+        this.orderService.paymentCart(this.order).subscribe(data=>{
+            //đặt hàng thành công thì chuyển về trang lịch sử mua hàng 
+            this.toastService.showSuccess("success","Đặt hàng thành công");
+            this.router.navigate(['home']);
+        },
+        error =>{
+
+        }
+        )
     }
 
 

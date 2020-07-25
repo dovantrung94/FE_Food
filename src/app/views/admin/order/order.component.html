@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-header">
+    <i class="fa fa-align-justify"></i> Danh sách sản phẩm
+    </div>
+    <div class="card-body">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+    <th>Product Name</th>
+    <th>Category Name</th>
+    <th>Price</th>
+    <th>Price Sale</th>
+    <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of listProduct" >
+    <td>{{item.name}}</td>
+    <td>{{item.categoryName}}</td>
+    <td>{{item.price}}</td>
+    <td>{{item.priceSale}}</td>
+    <td>
+    <span class="badge badge-success">Active</span>
+    </td>
+    </tr>
+
+
+    </tbody>
+    </table>
+    <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+    <li class="page-item active">
+    <a class="page-link" href="#">1</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+    </div>
+    </div>

@@ -73,7 +73,7 @@
 
     <div class="list-product-df row">
         <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of listProduct">
-            <div class="item-product" (click)="goDetail()">
+            <div class="item-product" (click)="goDetail(item.id)">
                 <div class="image-product">
                     <img src="../../../assets/product/{{ item.url }}"/>
                 </div>
