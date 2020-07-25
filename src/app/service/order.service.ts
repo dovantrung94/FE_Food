@@ -22,4 +22,12 @@ export class OrderService {
         };
         return this.httpClient.post<any>(this.baseUrlServer +"pay",order,{ headers });
     }
+
+    getAllOrderByAdmin():Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer +"admin/order?page=0&size=10",{ headers });
+    }
 }

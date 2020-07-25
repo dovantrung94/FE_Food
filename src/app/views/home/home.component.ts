@@ -13,66 +13,6 @@ import { CommonService } from '../../service/common.service';
 export class HomeComponent implements OnInit {
     user :Object
     listProduct =[];
-    // listProduct = [
-    //     {
-    //         id : 1,
-    //         name : "Smoked Ham",
-    //         type : "Products",
-    //         price: 8.53,
-    //         image: "product1.jpg"
-    //     },
-    //     {
-    //         id : 2,
-    //         name : "Sweet Oranges",
-    //         type : "Fresh Fruits, Product",
-    //         price: 8.53,
-    //         image: "product2.jpg"
-    //     },
-    //     {
-    //         id : 3,
-    //         name : "Smoked Ham",
-    //         type : "Products",
-    //         price: 8.53,
-    //         image: "product2.jpg"
-    //     },
-    //     {
-    //         id : 4,
-    //         name : "Smoked Ham",
-    //         type : "Products",
-    //         price: 8.53,
-    //         image: "product1.jpg"
-    //     },
-    //     {
-    //         id : 5,
-    //         name : "Smoked Ham",
-    //         type : "Products",
-    //         price: 8.53,
-    //         image: "product2.jpg"
-    //     },
-    //     {
-    //         id : 6,
-    //         name : "Smoked Ham",
-    //         type : "Products",
-    //         price: 8.53,
-    //         image: "product1.jpg"
-    //     },
-    //     {
-    //         id : 7,
-    //         name : "Smoked Ham",
-    //         type : "Products",
-    //         price: 8.53,
-    //         image: "product2.jpg"
-    //     },
-    //     {
-    //         id : 8,
-    //         name : "Smoked Ham",
-    //         type : "Products",
-    //         price: 8.53,
-    //         image: "product1.jpg"
-    //     },
-
-    // ]
-
     constructor(
         private productService: ProductService,
         public commonServ : CommonService,

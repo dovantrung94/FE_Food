@@ -1,4 +1,5 @@
-<div class="box table_category">
+<div class="card">
+ <div class="card-body">
     <button type="button"  class="btn btn-success create" data-toggle="modal" data-target="#createCategory"><span class="cil-contrast btn-icon mr-2"></span> Create</button>
     <table class="table table-bordered">
       <thead>
@@ -12,13 +13,22 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr *ngFor="let category of categorys" >
-          <th scope="row">1</th>
-          <td>{{category.name}}</td>
-          <td>
-            <button type="button" class="btn btn-primary" (click)="openModal(createCategory, category)">Edit</button>
+        <tr *ngFor="let user of users" >
+          <td scope="row">1</td>
+          <td>{{user.username}}</td>
+          <td>{{user.email}}</td>
+          <td [ngSwitch]="user.sex">
+            <span *ngSwitchCase="1">Nam</span>
+            <span *ngSwitchCase="0">Nữ</span>
+            <span *ngSwitchCase="2">Giới tính khác</span>
           </td>
-        </tr> -->
+          <td [ngSwitch]="user.role">
+            <span *ngSwitchCase="1">Admin</span>
+            <span *ngSwitchCase="0">User</span>
+          </td>
+          <td>{{user.dateCreate}}</td>
+        </tr>
       </tbody>
     </table>
   </div>
+</div>

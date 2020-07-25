@@ -18,6 +18,6 @@ export class UserService {
         const options = {
             headers: headers
         };
-        return this.httpClient.get<User[]>(this.baseUrlServer + "admin/user?page=1&size=10",options)
+        return this.httpClient.get<User[]>(this.baseUrlServer + "admin/user",options)
     }
 }
