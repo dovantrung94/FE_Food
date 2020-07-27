@@ -1,3 +1,4 @@
+import { LogoutComponent } from './logout/logout.component';
 import { CategoryComponent } from './category/category.component';
 import { ShareModule } from './../../share.module';
 import { NgModule } from '@angular/core';
@@ -30,10 +31,12 @@ import {
 } from '@coreui/angular';
 import { UserComponent } from './user/user.component';
 import { from } from 'rxjs';
+import { OrderComponent } from './order/order.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent],
+  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent,LogoutComponent, OrderComponent, ProductListComponent],
   imports: [
     CommonModule,
     ShareModule,

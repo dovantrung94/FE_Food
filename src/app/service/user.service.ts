@@ -14,10 +14,18 @@ export class UserService {
     }
 
     getAllUser():Observable<User[]>{
-        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token"));
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {
             headers: headers
         };
-        return this.httpClient.get<User[]>(this.baseUrlServer + "admin/user?page=1&size=10",options)
+        return this.httpClient.get<User[]>(this.baseUrlServer + "admin/user",options)
+    }
+
+    createUserByAdmin(user:User):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.post<any>(this.baseUrlServer + "admin/user",user,options)
     }
 }
