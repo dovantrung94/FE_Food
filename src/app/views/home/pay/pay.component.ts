@@ -34,4 +34,12 @@ export class PayComponent implements OnInit {
         this.router.navigate(['home/confirm']);
     }
 
+    changeNumber (value) {
+      if (value == 'add') {
+
+      } else {
+
+      }
+    }
+
 }
