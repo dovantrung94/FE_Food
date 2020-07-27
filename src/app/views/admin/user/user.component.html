@@ -1,6 +1,7 @@
 <div class="card">
- <div class="card-body">
-    <button type="button"  class="btn btn-success create" data-toggle="modal" data-target="#createCategory"><span class="cil-contrast btn-icon mr-2"></span> Create</button>
+  <div class="card-body">
+    <button type="button" class="btn btn-success create" data-toggle="modal" data-target="#createUser"><span
+        class="cil-contrast btn-icon mr-2"></span> Create</button>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -10,10 +11,12 @@
           <th scope="col">Giói tính</th>
           <th scope="col">Role</th>
           <th scope="col">Ngày đăng kí</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Hành động</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users" >
+        <tr *ngFor="let user of users">
           <td scope="row">1</td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
@@ -27,8 +30,66 @@
             <span *ngSwitchCase="0">User</span>
           </td>
           <td>{{user.dateCreate}}</td>
+          <td [ngSwitch]="user.status">
+            <span *ngSwitchCase="1">Hoạt động</span>
+            <span *ngSwitchCase="0">Khóa</span>
+          </td>
+          <td><i class="icon-note icons" (click)="updateUser(user)"></i></td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="!edit" class="modal-title" id="exampleModalLongTitle">Create User</h5>
+        <h5 *ngIf="edit" class="modal-title" id="exampleModalLongTitle">Update User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form >
+          <div class="form-group" [formGroup]="editUser"  >
+            <input type="hidden" class="form-control" id="category-id" formControlName="id">
+            <label for="category-name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="category-name" formControlName="name">
+            <label for="pass" class="col-form-label">Password:</label>
+            <input type="password" class="form-control" id="pass" formControlName="pass">
+            <label for="emailregister" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="emailregister" formControlName="email">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="sex" class="col-form-label">Sex:</label>
+                <select id="selectSex" name="select" class="form-control"  (change)="selectChangeSex($event)" size="1">
+                  <option value="" disabled selected >Please select</option>
+                  <option value="1">Nam</option>
+                  <option value="0">Nữ</option>
+                  <option value="2">Giới tính khác</option>
+                  </select>
+              </div>
+              <div class="col-md-6">
+                <label for="role" class="col-form-label">Role:</label>
+                <select id="selectRole" name="select" class="form-control"   (change)="selectChangeRole($event)"  >
+                  <option value="" selected disabled>Please select</option>
+                  <option   value="1">Admin</option>
+                  <option   value="0">User</option>
+                  </select>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" (click)="createUser()" class="btn btn-primary">Save</button>
+      </div>
+    </div>
   </div>
 </div>
