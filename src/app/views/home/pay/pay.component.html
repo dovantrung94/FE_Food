@@ -3,13 +3,16 @@
         <p class="tt-main-df">Cart</p>
         <table class="tb-product">
             <tr class="txt-title">
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
+                <th class="infor-product">Product</th>
+                <th class="txt-price">Price</th>
+                <th class="txt-quantity">Quantity</th>
+                <th class="txt-total">Total</th>
             </tr>
             <tr>
                 <td class="infor-product">
+                    <div class="box-delete">
+                        x
+                    </div>
                     <div class="img-product">
                         <img src="../../../../assets/images/product1.jpg"/>
                     </div>
@@ -18,11 +21,26 @@
                     </div>
                 </td>
                 <td class="txt-price">$8.35</td>
-                <td class="txt-quantity">5</td>
+                <td class="txt-quantity">
+                    <div class="btn-status">
+                        <div class="nb-product">
+                          5
+                        </div>
+                        <div class="btn-up btn-change-number" (click)="changeNumber('add')">
+                            <img src="../../../../assets/images/ic_up.png"/>
+                        </div>
+                        <div class="btn-down btn-change-number" (click)="changeNumber('delete')">
+                            <img src="../../../../assets/images/ic_down.png"/>
+                        </div>
+                    </div>
+                </td>
                 <td class="txt-total">$41.75</td>
             </tr>
             <tr>
                 <td class="infor-product">
+                    <div class="box-delete">
+                        x
+                    </div>
                     <div class="img-product">
                         <img src="../../../../assets/images/product2.jpg"/>
                     </div>
@@ -31,11 +49,26 @@
                     </div>
                 </td>
                 <td class="txt-price">$8.35</td>
-                <td class="txt-quantity">5</td>
+                <td class="txt-quantity">
+                    <div class="btn-status">
+                        <div class="nb-product">
+                          5
+                        </div>
+                        <div class="btn-up btn-change-number" (click)="changeNumber('add')">
+                            <img src="../../../../assets/images/ic_up.png"/>
+                        </div>
+                        <div class="btn-down btn-change-number" (click)="changeNumber('delete')">
+                            <img src="../../../../assets/images/ic_down.png"/>
+                        </div>
+                    </div>
+                </td>
                 <td class="txt-total">$41.75</td>
             </tr>
             <tr>
                 <td class="infor-product">
+                    <div class="box-delete">
+                        x
+                    </div>
                     <div class="img-product">
                         <img src="../../../../assets/images/product1.jpg"/>
                     </div>
@@ -44,7 +77,19 @@
                     </div>
                 </td>
                 <td class="txt-price">$8.35</td>
-                <td class="txt-quantity">5</td>
+                <td class="txt-quantity">
+                    <div class="btn-status">
+                        <div class="nb-product">
+                          5
+                        </div>
+                        <div class="btn-up btn-change-number" (click)="changeNumber('add')">
+                            <img src="../../../../assets/images/ic_up.png"/>
+                        </div>
+                        <div class="btn-down btn-change-number" (click)="changeNumber('delete')">
+                            <img src="../../../../assets/images/ic_down.png"/>
+                        </div>
+                    </div>
+                </td>
                 <td class="txt-total">$41.75</td>
             </tr>
             <tr>
