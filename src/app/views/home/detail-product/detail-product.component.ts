@@ -1,5 +1,11 @@
+import { ToastService } from './../../../service/toast.service';
+import { CartService } from './../../../service/cart.service';
+import { DataService } from './../../../service/data.service';
+import { Product } from './../../../model/product';
+import { ProductService } from './../../../service/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cart } from 'src/app/model/cart';
 declare var $: any;
 
 @Component({
@@ -8,76 +14,42 @@ declare var $: any;
   styleUrls: ['./detail-product.component.scss', '../home.component.scss']
 })
 export class DetailProductComponent implements OnInit {
-
+    id:number;
     constructor(
-      private router: Router
-    ) { }
-
+      private router: Router,
+      private productService:ProductService,
+      private dataService:DataService,
+      private cartService:CartService,
+      private toastService:ToastService
+    ) { 
+      this.dataService.id.subscribe(productId => this.id = productId);
+    }
+    productDetail : any;
     typeChoose = 1;
     numberProduct = 1;
+    listProduct =[];
+    cart = new Cart();
 
-    listProduct = [
-      {
-          id : 1,
-          name : "Smoked Ham",
-          type : "Products",
-          price: 8.53,
-          image: "product1.jpg"
-      },
-      {
-          id : 2,
-          name : "Sweet Oranges",
-          type : "Fresh Fruits, Product",
-          price: 8.53,
-          image: "product2.jpg"
-      },
-      {
-          id : 3,
-          name : "Smoked Ham",
-          type : "Products",
-          price: 8.53,
-          image: "product2.jpg"
-      },
-      {
-          id : 4,
-          name : "Smoked Ham",
-          type : "Products",
-          price: 8.53,
-          image: "product1.jpg"
-      },
-      {
-          id : 5,
-          name : "Smoked Ham",
-          type : "Products",
-          price: 8.53,
-          image: "product2.jpg"
-      },
-      {
-          id : 6,
-          name : "Smoked Ham",
-          type : "Products",
-          price: 8.53,
-          image: "product1.jpg"
-      },
-      {
-          id : 7,
-          name : "Smoked Ham",
-          type : "Products",
-          price: 8.53,
-          image: "product2.jpg"
-      },
-      {
-          id : 8,
-          name : "Smoked Ham",
-          type : "Products",
-          price: 8.53,
-          image: "product1.jpg"
-      },
-
-  ]
 
 
     ngOnInit(): void {
+        this.productService.getProductDetail(this.id).subscribe(
+            data =>{
+              debugger;
+              this.productDetail=data;
+            },
+            error=>{
+              console.log(error);
+            }
+          )
+          this.productService.getListProduct().subscribe(
+            data =>{
+              this.listProduct=data;
+            },
+            error=>{
+              console.log(error);
+            }
+          )
     }
 
     changeChoose(value) {
@@ -87,8 +59,18 @@ export class DetailProductComponent implements OnInit {
 
     }
 
-    addToCard () {
-        this.router.navigate(['home/pay']);
+    addToCard (id) {
+        this.cart.productId=id;
+        this.cart.quantity=this.numberProduct;
+        this.cartService.addProductToCart(this.cart).subscribe(
+          data =>{
+            debugger;
+            this.toastService.showSuccess("Success","Thêm vào giỏ hàng thành công");
+          },
+          error=>{
+            this.toastService.showError("Cart","Thêm vào giỏ hàng thất bại");
+          }
+        )
     }
 
     changeItem (value) {

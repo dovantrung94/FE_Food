@@ -1,4 +1,7 @@
+import { User } from './../../../model/user';
+import { UserService } from './../../../service/user.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,65 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  users = [];
+  editUser: FormGroup;
+  edit: boolean;
+  user=new User();
+  sex:string;
+  role:string;
+
+  constructor(private userService: UserService) {
+    this.edit=false;
+  }
 
   ngOnInit(): void {
+    this.userService.getAllUser().subscribe(
+      data => {
+        this.users = data;
+      },
+      error => {
+        console.log(error);
+      
+      }
+    )
+    this.editUser = new FormGroup({
+      name: new FormControl(),
+      id: new FormControl(),
+      pass: new FormControl(),
+      email: new FormControl()
+    });
+  }
+
+  createUser() {
+    debugger;
+    this.user =Object.assign(this.user,this.editUser.value);
+    this.editUser.reset();
+    $('#createUser').modal('hide');
+  }
+  onSubmit() {
+
+  }
+  selectChangeSex(event) {
+   this.sex=event.target.value;
+  }
+
+  selectChangeRole(event) {
+    this.role=event.target.value;
+  }
+
+  updateUser(user:any){
+    this.edit=true;
+    $('#createUser').modal('show');
+
+    this.editUser.setValue({
+      name: user.username,
+      id: user.id,
+      pass:'',
+      email: user.email
+     });
+
+     $('#selectSex').val(user.sex);
+     $('#selectRole').val(user.role);
   }
 
 }
