@@ -75,4 +75,12 @@ export class ProductService {
         params.set('color',product.color);
         return this.httpClient.post<Product>(this.baseUrlServer + "admin/product/upload",params,options);
     }
+
+    searchProduct(keyword:string):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<Product>(this.baseUrlServer + "product/search/user?keyword="+keyword,options);
+    }
 }

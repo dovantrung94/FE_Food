@@ -1,57 +1,33 @@
 <div class="box-header">
-  <div class="box-content-df">
+    <div class="box-content-df">
         <div class="line-search">
-            <div class="txt-logo"  (click)="foodMarket()" >
+            <div class="txt-logo" (click)="foodMarket()">
                 <span class="txt1">Food</span><span class="txt2">Market</span>
             </div>
-            <div class="box-search">
-                <input placeholder="Search for products ..."/>
+            <div class="box-search"   >
+                <input (focus)="onFocus()" (focusout)="onFocusOutEvent()" autofocus id="search" [(ngModel)]="searchKeyword" (keyup)="searchChangeEvent($event)"
+                     placeholder="Search for products ..." />
                 <div class="btn-search">
                     <span class="glyphicon glyphicon-search"></span>
                 </div>
-                <div class="result-search" *ngIf="showResult" >
+                <div class="result-search" *ngIf="showResult">
                     <!-- co ket qua -->
                     <div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
-                            </div>
-                        </div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
-                            </div>
-                        </div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
-                            </div>
-                        </div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
-                            </div>
-                        </div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
+                        <div *ngFor="let product of productSearch" class="item-result">
+                            <div (click)="goDetailProduct(product.id)">
+                                <img src="../../../assets/product/{{product.url}}" />
+                                <div class="infor-result">
+                                    <p class="rs-name">{{product.name}}</p>
+                                    <p class="rs-price">Giá :
+                                        {{product.priceSale != null ? product.priceSale : product.price}}đ</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- khong co kq -->
-                    <!-- <div class="no-result">
+                    <div class="no-result" *ngIf="noDataResult" >
                         Không có kết quả tìm kiếm
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
