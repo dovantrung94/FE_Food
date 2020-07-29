@@ -1,62 +1,88 @@
-<div class="main_product">
-  <form class="main_form"  novalidate (ngSubmit)="onSubmit()" [formGroup]="productFrom" class="row justify-content-md-center">
-     <div class="col-md-12">
-       <div class="form-group row">
-         <label for="example-text-input" class="col-2 col-form-label">
-           Product Name:
-         </label>
-         <div class="col-10">
-           <input class="form-control" type="text" formControlName="name" id="example-text-input">
-         </div>
-       </div>
-       <div class="form-group row">
-         <label for="example-email-input" class="col-2 col-form-label">
-           Description:
-         </label>
-         <div class="col-10">
-           <input class="form-control" type="email" formControlName="description" id="example-email-input">
-         </div>
-       </div>
- 
-       <div class="form-group row">
-         <label for="example-url-fb" class="col-2 col-form-label">
-           Price:
-         </label>
-         <div class="col-10">
-           <input class="form-control" formControlName="price" type="url" id="example-url-fb">
-         </div>
-       </div>
-       <div class="form-group row">
-         <label for="example-url-twt" class="col-2 col-form-label">
-           Price Sale:
-         </label>
-         <div class="col-10">
-           <input class="form-control" formControlName="priceSale" type="url" id="example-url-twt">
-         </div>
-       </div>
-       <div class="form-group row">
-         <label for="example-url-twt" class="col-2 col-form-label">
-           Category:
-         </label>
-         <div class="col-10">
-           <select class="form-control" formControlName="categoryId" id="example-url-twt" required>
-             <option *ngFor="let category of categorys" [value]="category.id" >{{category.name}}</option>
-           </select>
-         </div>
-       </div>
-       <div class="form-group row">
-         <label for="file" class="col-2 col-form-label">Image</label>
-         <div class="col-10">
-           <input type="file" (change)="onFileChange($event)" class="form-control-file" id="exampleFormControlFile1">
-         </div>
- 
-       </div>
- 
-       <div class="form-group row">
-         <div class="col-10 offset-2">
-           <button class="btn btn-primary" type="submit">Create</button>
-         </div>
-       </div>
-     </div>
-   </form>
- </div>
+<div class="card">
+  <div class="card-header">
+    <strong>Product Form</strong>
+  </div>
+  <div class="card-body">
+    <form class="main_form" novalidate (ngSubmit)="onSubmit()" [formGroup]="productFrom"
+      class="row justify-content-md-center">
+
+      <div class="col-md-12">
+
+        <div class="form-group">
+          <label for="name">Product Name:</label>
+          <input type="text" class="form-control" id="name" formControlName="name"
+            placeholder="Enter your product name">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" class="form-control" id="description" formControlName="description"
+            placeholder="Enter your description">
+        </div>
+
+        <div class="form-group">
+          <label for="content">Content:</label>
+          <input type="text" class="form-control" id="content" formControlName="content"
+            placeholder="Enter your content">
+        </div>
+
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="text" class="form-control" id="price" formControlName="price"
+            placeholder="Enter your price">
+        </div>
+
+        <div class="form-group">
+          <label for="priceSale">Price Sale:</label>
+          <input type="text" class="form-control" id="priceSale" formControlName="priceSale"
+            placeholder="Enter your priceSale">
+        </div>
+
+        <div class="form-group">
+          <label for="priceSale">Category:</label>
+          <select class="form-control" formControlName="categoryId" id="example-url-twt" required>
+            <option *ngFor="let category of categorys" [value]="category.id">{{category.name}}</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label for="weight">Weight:</label>
+            <input type="text" class="form-control" id="weight" formControlName="weight"
+              placeholder="Enter your weight">
+          </div>
+
+
+          <div class="form-group col-sm-4">
+            <label for="color">Color:</label>
+            <input type="text" class="form-control" id="color" formControlName="color"
+              placeholder="Enter your color">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label for="composition">Composition:</label>
+            <input type="text" class="form-control" id="composition" formControlName="composition"
+              placeholder="Enter your composition">
+          </div>
+
+
+          <div class="form-group col-sm-4">
+            <label for="volume">Volume:</label>
+            <input type="text" class="form-control" id="volume" formControlName="volume"
+              placeholder="Enter your volume">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="file">Image</label>
+          <input type="file" (change)="onFileChange($event)" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-sm btn-primary" type="submit">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
