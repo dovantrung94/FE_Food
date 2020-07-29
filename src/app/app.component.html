@@ -5,3 +5,40 @@
 <div [ngClass]="showMenu == 'none' ? 'col-md-12' : showMenu == 'admin' ? 'admin_page' : 'box-content-df'">
     <router-outlet></router-outlet>
 </div>
+
+<div *ngIf="showMenu == 'user'" class="box-footer">
+    <div class="box-content-df row">
+        <div class="col-lg-3 col-sm-4 col-6">
+            <h6>Help</h6>
+            <div class="txt-footer">
+              <p>How to Make an Order?</p>
+              <p>Delivery Terms</p>
+              <p>My Orders</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-4 col-6">
+            <h6>Quick Links</h6>
+            <div class="txt-footer">
+              <p>Facebook</p>
+              <p>Instagram</p>
+              <p>YouTube</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-4 col-6">
+            <h6>Shop</h6>
+            <div class="txt-footer">
+              <p>Products</p>
+              <p>Cart</p>
+              <p>Wishlist</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-4 col-6">
+            <h6>Categories</h6>
+            <div class="txt-footer">
+              <p>Products</p>
+              <p>Vegetables</p>
+              <p>Fruits</p>
+            </div>
+        </div>
+    </div>
+</div>
