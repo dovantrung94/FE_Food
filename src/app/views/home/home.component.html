@@ -71,6 +71,19 @@
         </div>
     </div>
 
+    <div class="box-img-intro">
+        <div class="img-intro">
+            <img src="../../../assets/images/bg_home2.jpg"/>
+        </div>
+        <div class="img-intro">
+            <img src="../../../assets/images/bg_home3.jpg"/>
+        </div>
+    </div>
+
+    <div class="tt-main-home">
+      What's trending
+    </div>
+
     <div class="list-product-df row">
         <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of listProduct">
             <div class="item-product" (click)="goDetail(item.id)">
@@ -87,7 +100,7 @@
                     <div class="txt-bottom">
                         <span class="txt-price">${{ item.price }}</span>
                         <span class="txt-add">
-                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <img src="../../../assets/images/ic_store_green.png"/>
                             Add to cart
                         </span>
 
