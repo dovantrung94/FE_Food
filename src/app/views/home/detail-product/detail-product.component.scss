@@ -112,6 +112,26 @@ table, tr, td {
 .number-product .sub-item {
   float: left;
 }
+.tt-cate {
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+.list-category div {
+  height: 32px;
+  border-bottom: 1px solid #eaeaea;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.list-category div:hover {
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.box-infor {
+  padding-right: 30px;
+}
+
 
 .commentlist{
   list-style: none;

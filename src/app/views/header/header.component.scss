@@ -213,6 +213,36 @@
   width: 24px;
   margin-right: 4px;
 }
+
+.header-small {
+    background-color: #eaeaea;
+    color: #474747;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 600;
+    border-bottom: 1px solid #eceaea;
+}
+
+.box-login div {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.box-login {
+  float: right;
+}
+
+.txt-left {
+  display: inline-block;
+}
+
+.btn-sigup::after {content: "/";margin-left: 4px;margin-right: 4px;}
+
+.box-login div:hover {
+  opacity: 0.8;
+}
+
 @media only screen and (max-width: 1024px) {
   .box-search{
     width: 50%;
