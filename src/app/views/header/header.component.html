@@ -12,99 +12,60 @@
         </div>
     </div>
   <div class="box-content-df">
+    <div class="box-content-df">
         <div class="line-search">
-            <div class="txt-logo"  (click)="foodMarket()" >
+            <div class="txt-logo" (click)="foodMarket()">
                 <span class="txt1">Food</span><span class="txt2">Market</span>
             </div>
-            <div class="box-search">
-                <input placeholder="Search for products ..."/>
+            <div class="box-search"   >
+                <input (focus)="onFocus()" (focusout)="onFocusOutEvent()" autofocus id="search" [(ngModel)]="searchKeyword" (keyup)="searchChangeEvent($event)"
+                     placeholder="Search for products ..." />
                 <div class="btn-search">
                     <span class="glyphicon glyphicon-search"></span>
                 </div>
-                <div class="result-search" *ngIf="showResult" >
+                <div class="result-search" *ngIf="showResult">
                     <!-- co ket qua -->
                     <div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
-                            </div>
-                        </div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
-                            </div>
-                        </div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
-                            </div>
-                        </div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
-                            </div>
-                        </div>
-                        <div class="item-result">
-                            <img src="../../../assets/images/product1.jpg"/>
-                            <div class="infor-result">
-                                <p class="rs-name">Qủa cam</p>
-                                <p class="rs-price">Giá : 10.000đ</p>
+                        <div *ngFor="let product of productSearch" class="item-result">
+                            <div (click)="goDetailProduct(product.id)">
+                                <img src="../../../assets/product/{{product.url}}" />
+                                <div class="infor-result">
+                                    <p class="rs-name">{{product.name}}</p>
+                                    <p class="rs-price">Giá :
+                                        {{product.priceSale != null ? product.priceSale : product.price}}đ</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- khong co kq -->
-                    <!-- <div class="no-result">
+                    <div class="no-result" *ngIf="noDataResult" >
                         Không có kết quả tìm kiếm
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <div class="store-container">
                 <div class="box-store">
                     <img src="../../../assets/images/ic_store.png"/>
-                    <span class="txt-price">$0.00</span>
+                    <span class="txt-price">{{cart.totalPrice != null ? cart.totalPrice : 0}}đ</span>
                 </div>
                 <div class="box-product">
-                    <div class="item-result">
-                        <img src="../../../assets/images/product1.jpg"/>
+                    <div class="item-result" *ngFor="let cartItem of listCartItem" >
+                        <img src="../../../assets/product/{{cartItem.url}}"/>
                         <div class="infor-result">
-                            <p class="rs-name">Qủa cam</p>
-                            <p class="rs-price">10.000đ x 1</p>
+                            <p class="rs-name">{{cartItem.name}}</p>
+                            <p class="rs-price">{{cartItem.price}}đ x {{cartItem.quantity}}</p>
                         </div>
-                        <div class="remove-item">x</div>
-                    </div>
-                    <div class="item-result">
-                        <img src="../../../assets/images/product1.jpg"/>
-                        <div class="infor-result">
-                            <p class="rs-name">Qủa cam</p>
-                            <p class="rs-price">10.000đ x 1</p>
-                        </div>
-                        <div class="remove-item">x</div>
-                    </div>
-                    <div class="item-result">
-                        <img src="../../../assets/images/product1.jpg"/>
-                        <div class="infor-result">
-                            <p class="rs-name">Qủa cam</p>
-                            <p class="rs-price">10.000đ x 1</p>
-                        </div>
-                        <div class="remove-item">x</div>
-                    </div>
+                        <div class="remove-item" (click)="deleteItemCart(cartItem)" >x</div>
+                    </div> 
                     <div class="box-total">
                         <div class="txt-total">
-                            Tổng : $11.70
+                            Tổng :  {{cart.totalPrice != null ? cart.totalPrice : 0}}
                         </div>
                         <div class="box-line">
-                            <div class="view-cart">
+                            <div class="view-cart" (click)="viewCart()">
                                 View Cart
                             </div>
-                            <div class="check-oout">
+                            <div class="check-oout" (click)="checkOut()">
                                 Checkout
                             </div>
                         </div>

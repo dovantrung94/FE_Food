@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
     }
 
     goDetail(id) {
-      debugger;
         this.dataService.changeProductId(id);
         this.router.navigate(['home/detail-product']);
     }
