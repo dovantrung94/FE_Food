@@ -33,42 +33,26 @@
             <div class="store-container">
                 <div class="box-store">
                     <img src="../../../assets/images/ic_store.png"/>
-                    <span class="txt-price">$0.00</span>
+                    <span class="txt-price">{{cart.totalPrice != null ? cart.totalPrice : 0}}đ</span>
                 </div>
                 <div class="box-product">
-                    <div class="item-result">
-                        <img src="../../../assets/images/product1.jpg"/>
+                    <div class="item-result" *ngFor="let cartItem of listCartItem" >
+                        <img src="../../../assets/product/{{cartItem.url}}"/>
                         <div class="infor-result">
-                            <p class="rs-name">Qủa cam</p>
-                            <p class="rs-price">10.000đ x 1</p>
+                            <p class="rs-name">{{cartItem.name}}</p>
+                            <p class="rs-price">{{cartItem.price}}đ x {{cartItem.quantity}}</p>
                         </div>
-                        <div class="remove-item">x</div>
-                    </div>
-                    <div class="item-result">
-                        <img src="../../../assets/images/product1.jpg"/>
-                        <div class="infor-result">
-                            <p class="rs-name">Qủa cam</p>
-                            <p class="rs-price">10.000đ x 1</p>
-                        </div>
-                        <div class="remove-item">x</div>
-                    </div>
-                    <div class="item-result">
-                        <img src="../../../assets/images/product1.jpg"/>
-                        <div class="infor-result">
-                            <p class="rs-name">Qủa cam</p>
-                            <p class="rs-price">10.000đ x 1</p>
-                        </div>
-                        <div class="remove-item">x</div>
-                    </div>
+                        <div class="remove-item" (click)="deleteItemCart(cartItem)" >x</div>
+                    </div> 
                     <div class="box-total">
                         <div class="txt-total">
-                            Tổng : $11.70
+                            Tổng :  {{cart.totalPrice != null ? cart.totalPrice : 0}}
                         </div>
                         <div class="box-line">
-                            <div class="view-cart">
+                            <div class="view-cart" (click)="viewCart()">
                                 View Cart
                             </div>
-                            <div class="check-oout">
+                            <div class="check-oout" (click)="checkOut()">
                                 Checkout
                             </div>
                         </div>

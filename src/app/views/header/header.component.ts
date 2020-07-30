@@ -1,3 +1,4 @@
+import { CartService } from './../../service/cart.service';
 import { DataService } from './../../service/data.service';
 import { ToastService } from './../../service/toast.service';
 import { error } from '@angular/compiler/src/util';
@@ -15,16 +16,38 @@ import * as $ from "jquery";
 export class HeaderComponent implements OnInit {
   searchKeyword: string;
   showResult = false;
-  noDataResult=false;
+  noDataResult = false;
   productSearch: [];
+  cart: any;
+  listCartItem = [];
   constructor(private router: Router,
     private productService: ProductService,
     private toastService: ToastService,
-    private dataService: DataService
-  ) { }
+    private dataService: DataService,
+    private cartService: CartService
+  ) {
+    this.dataService.getDropdownValue().subscribe((newValue) => {
+      this.cartService.getCart().subscribe(data => {
+        this.cart = data;
+        this.listCartItem = data.cartItems;
+      },
+        error => {
+          console.log(error);
+        }
+      )
+    });
+
+  }
 
   ngOnInit(): void {
-
+    this.cartService.getCart().subscribe(data => {
+      this.cart = data;
+      this.listCartItem = data.cartItems;
+    },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   foodMarket() {
@@ -39,24 +62,21 @@ export class HeaderComponent implements OnInit {
   }
 
   onFocusOutEvent() {
-    setTimeout(()=> {
+    setTimeout(() => {
       this.showResult = false;
-  }, 100);
-   
+    }, 100);
+
   }
-
-
-
   searchChangeEvent(data: any) {
     console.log(this.searchKeyword);
     this.productService.searchProduct(this.searchKeyword).subscribe(data => {
       debugger;
       this.showResult = true;
       this.productSearch = data;
-      if(data.length == 0){
-        this.noDataResult=true;
-      }else{
-        this.noDataResult=false;
+      if (data.length == 0) {
+        this.noDataResult = true;
+      } else {
+        this.noDataResult = false;
       }
     },
       error => {
@@ -69,7 +89,36 @@ export class HeaderComponent implements OnInit {
     debugger;
     this.dataService.changeProductId(id);
     this.router.navigate(['home/detail-product']);
-    
+
   }
-  
+  deleteItemCart(cartItem: any) {
+    debugger;
+    console.log(cartItem);
+    this.cartService.deleteItemInCart(cartItem.id).subscribe(
+      data => {
+        this.updateCart();
+      },
+      error => {
+        this.toastService.showError("Error", "Xóa không thành công");
+      }
+    )
+  }
+  updateCart() {
+    this.cartService.getCart().subscribe(data => {
+      this.cart = data;
+      this.listCartItem = data.cartItems;
+    },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  viewCart() {
+    this.router.navigate(['home/pay']);
+  }
+
+  checkOut() {
+    this.router.navigate(['home/confirm']);
+  }
 }

@@ -29,4 +29,12 @@ export class CartService {
         };
         return this.httpClient.post<any>(this.baseUrlServer +"cart/item" ,cart,{ headers });
     }
+
+    deleteItemInCart(cartItemId:number){
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.delete<any>(this.baseUrlServer +"cart/item/"+cartItemId ,{ headers });
+    }
 }

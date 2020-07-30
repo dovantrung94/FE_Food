@@ -64,8 +64,8 @@ export class DetailProductComponent implements OnInit {
         this.cart.quantity=this.numberProduct;
         this.cartService.addProductToCart(this.cart).subscribe(
           data =>{
-            debugger;
             this.toastService.showSuccess("Success","Thêm vào giỏ hàng thành công");
+            this.dataService.setDropdownValue(""+id);
           },
           error=>{
             this.toastService.showError("Cart","Thêm vào giỏ hàng thất bại");
