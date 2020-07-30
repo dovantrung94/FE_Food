@@ -8,19 +8,19 @@
                 <th class="txt-quantity">Quantity</th>
                 <th class="txt-total">Total</th>
             </tr>
-            <tr>
+            <tr *ngFor="let cartItem of listCartItem" >
                 <td class="infor-product">
                     <div class="box-delete">
                         x
                     </div>
                     <div class="img-product">
-                        <img src="../../../../assets/images/product1.jpg"/>
+                        <img src="../../../../assets/product/{{cartItem.url}}"/>
                     </div>
-                    <div class="txt-name">
-                        Smoked Ham
+                       <div class="txt-name">
+                        {{cartItem.name}}
                     </div>
                 </td>
-                <td class="txt-price">$8.35</td>
+                <td class="txt-price">{{cartItem.price}}</td>
                 <td class="txt-quantity">
                     <div class="btn-status">
                         <div class="nb-product">
@@ -34,64 +34,9 @@
                         </div>
                     </div>
                 </td>
-                <td class="txt-total">$41.75</td>
+                <td class="txt-total">{{cartItem.price * cartItem.quantity}}</td>
             </tr>
-            <tr>
-                <td class="infor-product">
-                    <div class="box-delete">
-                        x
-                    </div>
-                    <div class="img-product">
-                        <img src="../../../../assets/images/product2.jpg"/>
-                    </div>
-                    <div class="txt-name">
-                        Smoked Ham
-                    </div>
-                </td>
-                <td class="txt-price">$8.35</td>
-                <td class="txt-quantity">
-                    <div class="btn-status">
-                        <div class="nb-product">
-                          5
-                        </div>
-                        <div class="btn-up btn-change-number" (click)="changeNumber('add')">
-                            <img src="../../../../assets/images/ic_up.png"/>
-                        </div>
-                        <div class="btn-down btn-change-number" (click)="changeNumber('delete')">
-                            <img src="../../../../assets/images/ic_down.png"/>
-                        </div>
-                    </div>
-                </td>
-                <td class="txt-total">$41.75</td>
-            </tr>
-            <tr>
-                <td class="infor-product">
-                    <div class="box-delete">
-                        x
-                    </div>
-                    <div class="img-product">
-                        <img src="../../../../assets/images/product1.jpg"/>
-                    </div>
-                    <div class="txt-name">
-                        Smoked Ham
-                    </div>
-                </td>
-                <td class="txt-price">$8.35</td>
-                <td class="txt-quantity">
-                    <div class="btn-status">
-                        <div class="nb-product">
-                          5
-                        </div>
-                        <div class="btn-up btn-change-number" (click)="changeNumber('add')">
-                            <img src="../../../../assets/images/ic_up.png"/>
-                        </div>
-                        <div class="btn-down btn-change-number" (click)="changeNumber('delete')">
-                            <img src="../../../../assets/images/ic_down.png"/>
-                        </div>
-                    </div>
-                </td>
-                <td class="txt-total">$41.75</td>
-            </tr>
+
             <tr>
                 <td colspan="2" class="box-voucher">
                     <div class="content-voucher">
@@ -118,13 +63,13 @@
                 <td>
                     Subtotal
                 </td>
-                <td class="txt-total">$51.50</td>
+                <td class="txt-total">{{cart.totalPrice}}</td>
             </tr>
             <tr class="txt-line2">
                 <td>
-                    Subtotal
+                    Total
                 </td>
-                <td>$51.50</td>
+                <td>{{cart.totalPrice}}</td>
             </tr>
         </table>
     </div>

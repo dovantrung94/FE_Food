@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   showResult = false;
-  constructor() { }
+  constructor(private router:Router) { }
+
 
   ngOnInit(): void {
+    
   }
-
+  foodMarket(){
+    this.router.navigate(['home']);
+  }
 }
