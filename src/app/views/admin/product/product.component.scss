@@ -3,6 +3,50 @@
     margin-left: 30px;
     background: #ffffff;
 }
+.card{
+    position: relative;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #c2cfd6;
+}
 .main_form{
     padding: 8px;
+}
+
+label{
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+.form_control{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    color: #3e515b;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c2cfd6;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.card-footer{
+    padding: .75rem 1.25rem;
+    background-color: #f0f3f5;
+    border-top: 1px solid #c2cfd6;
+}
+.btn_sm{
+    padding: .25rem .5rem;
+    font-size: .76563rem;
+    line-height: 1.5;
+    border-radius: 0;
 }

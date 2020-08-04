@@ -5,10 +5,19 @@ export const navItems: INavData[] = [
     name: 'Product',
     url: 'http://localhost:4200/admin',
     icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
+    children: [{
+      name: 'Danh sách sản phẩm',
+      url: 'http://localhost:4200/admin/product/list',
+      icon: 'icon-menu',
+      attributes: { disabled: false },
+    },
+    {
+      name: 'Thêm sản phẩm',
+      url: 'http://localhost:4200/admin/product/create',
+      icon: 'icon-menu',
+      attributes: { disabled: false },
     }
+  ]
   },
   {
     name: 'Category',
@@ -20,6 +29,18 @@ export const navItems: INavData[] = [
     name: 'User',
     url: 'http://localhost:4200/admin/user',
     icon: 'icon-user',
+    attributes: { disabled: false },
+  },
+  {
+    name: 'Order',
+    url: 'http://localhost:4200/admin/order',
+    icon: 'icon-basket',
+    attributes: { disabled: false },
+  },
+  {
+    name: 'Logout',
+    url: 'http://localhost:4200/admin/logout',
+    icon: 'icon-logout',
     attributes: { disabled: false },
   }
   // ,
