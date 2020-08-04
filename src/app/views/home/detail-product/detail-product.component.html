@@ -2,21 +2,17 @@
 <div class="screen-detail mgt-content-df">
     <div class="box-product row">
         <div class="col-lg-4 col-sm-4 col-6  box-image">
-            <img src="../../../../assets/images/product1.jpg"/>
+             <img src="../../../../assets/product/{{productDetail.url}}"/>
         </div>
         <div class="col-lg-6 col-sm-6 col-6  box-infor">
             <div class="txt-name">
-                Smoked Ham
+                {{productDetail.name}}
             </div>
             <div class="txt-price">
-                $8.35
+                {{productDetail.price}}
             </div>
             <div class="txt-intro">
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas vitae viverra risus.
-                Vivamus eget accumsan elit, tincidunt pharetra orci. Maecenas neque mi, porttitor eu ullamcorper nec,
-                aliquet eu nulla. Mauris maximus turpis tellus, vel aliquam neque aliquet accumsan. Maecenas ultrices facilisis
-                libero, eu laoreet mauris. Integer non aliquam sapien, ut auctor sem. Vivamus urna urna, eleifend eget augue sed,
-                pulvinar rutrum enim. Nullam lacinia mauris vel mattis lacinia.
+                {{productDetail.content}}
             </div>
             <div class="box-add-cart">
                 <div class="number-product">
@@ -24,7 +20,7 @@
                     {{ numberProduct }}
                     <div class="change-item add-more" (click)="changeItem('add')">+</div>
                 </div>
-                <div class="btn-add-cart" (click)="addToCard()">
+                <div class="btn-add-cart" (click)="addToCard(productDetail.id)">
                     Add to cart
                 </div>
             </div>
@@ -63,26 +59,37 @@
             <div class="choose-item choose-2" (click)="changeChoose(2)">
                 ADDITIONAL INFORMATION
             </div>
+            <div class="choose-item choose-3" (click)="changeChoose(3)">
+                REVIEW
+            </div>
         </div>
         <div class="infor-choose">
             <div *ngIf="typeChoose == 1">
-                Morbi non accumsan libero, volutpat ullamcorper odio. Donec non libero id augue suscipit commodo.
-                Curabitur porta ac ligula vel sollicitudin. Praesent vestibulum tellus urna, in imperdiet neque lobortis eleifend.
-                Nunc eros nulla, porta quis urna nec, luctus viverra diam. In ut ante est. Duis venenatis erat ac nisl malesuada gravida.
-                Pellentesque pellentesque tempor urna, quis vehicula mi mollis hendrerit.
-                Etiam iaculis convallis arcu, id lacinia massa imperdiet vitae.
+                {{productDetail.description}}
             </div>
             <div *ngIf="typeChoose == 2">
                 <table>
-                    <tr>
+                    <tr *ngIf ="productDetail.weight !=null">
                         <td class="txt-main">Weight</td>
-                        <td class="txt-infor">1 kg</td>
+                        <td class="txt-infor">{{productDetail.weight}}</td>
                     </tr>
-                    <tr>
-                        <td class="txt-main">Сomposition</td>
-                        <td class="txt-infor">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</td>
+                    <tr *ngIf ="productDetail.color !=null">
+                        <td class="txt-main">Color</td>
+                        <td class="txt-infor">{{productDetail.color}}</td>
                     </tr>
+                    <tr *ngIf ="productDetail.composition !=null">
+                        <td class="txt-main">Composition</td>
+                        <td class="txt-infor">{{productDetail.composition}}</td>
+                    </tr>
+                    <tr *ngIf ="productDetail.volume !=null">
+                        <td class="txt-main">Volume</td>
+                        <td class="txt-infor">{{productDetail.volume}}</td>
+                    </tr>
+    
                 </table>
+            </div>
+            <div *ngIf="typeChoose == 3">
+        
             </div>
         </div>
     </div>
@@ -96,11 +103,11 @@
         <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of listProduct">
             <div class="item-product" (click)="goDetail()">
                 <div class="image-product">
-                    <img src="../../../assets/images/{{ item.image }}"/>
+                    <img src="../../../assets/product/{{ item.url }}"/>
                 </div>
                 <div class="infor-product">
                     <div class="txt-type">
-                        {{ item.type }}
+                        {{ item.categoryName }}
                     </div>
                     <div class="txt-name">
                         {{ item.name }}
@@ -117,4 +124,5 @@
             </div>
         </div>
     </div>
+
 </div>

@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'detail-product', component: DetailProductComponent},
-  { path: 'pay', component: PayComponent},
-  { path: 'confirm', component: ConfirmComponent}
+  { path: 'pay', component: PayComponent,canActivate:[AuthGuard]},
+  { path: 'confirm', component: ConfirmComponent,canActivate:[AuthGuard]}
 
 
 ];

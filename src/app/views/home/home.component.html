@@ -86,13 +86,13 @@
 
     <div class="list-product-df row">
         <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of listProduct">
-            <div class="item-product" (click)="goDetail()">
+            <div class="item-product" (click)="goDetail(item.id)">
                 <div class="image-product">
-                    <img src="../../../assets/images/{{ item.image }}"/>
+                    <img src="../../../assets/product/{{ item.url }}"/>
                 </div>
                 <div class="infor-product">
                     <div class="txt-type">
-                        {{ item.type }}
+                        {{ item.categoryName }}
                     </div>
                     <div class="txt-name">
                         {{ item.name }}

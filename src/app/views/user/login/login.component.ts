@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { LoginService } from '../../../service/login.service';
 import { LocalStorageService } from '../../../service/local-storage.service';
+import { ToastService } from 'src/app/service/toast.service';
 // import { error } from '@angular/compiler/src/util';
 
 
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private loginService: LoginService,
-        // private toastService : ToastService,
+        private toastService : ToastService,
         private router: Router,
         private formBuilder : FormBuilder,
         private localServ : LocalStorageService
@@ -59,18 +60,20 @@ export class LoginComponent implements OnInit {
         $(".btn-login").addClass("button-disabled");
 
         var inforLogin = this.dataLogin.value;
-        // this.userServ.login(inforLogin.email, inforLogin.password, (res) => {
-        //     $(".btn-login").removeClass("button-disabled");
-
-        // });
 
         this.loginService.login(inforLogin.email, inforLogin.password).subscribe(data => {
+            debugger;
             console.log(data);
-            this.localServ.setItem("token",data.token);
-            this.router.navigate(['home']);
+            this.localServ.setItem("userLogin",data.role);
+            this.localServ.setItem("token",'Bearer '+ data.token.split(" "));
+            if(data.role == "1"){
+                this.router.navigate(['admin']);
+            }else if(data.role == "0"){
+                this.router.navigate(['home']);
+            }
 
         }, err => {
-            console.log("Login Fail");
+            this.toastService.showError("Login Fail" , "Sai tài khoản hoặc mật khẩu");
         })
 
     }
@@ -205,8 +208,6 @@ export class LoginComponent implements OnInit {
         // $('#resetPassword').modal('show');
     }
 
-    // ngOnDestroy() {
-    //     //unsubscribe
-    // }
+
 
 }
