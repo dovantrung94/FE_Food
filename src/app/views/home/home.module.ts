@@ -8,21 +8,23 @@ import { Routes, RouterModule } from "@angular/router";
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { PayComponent } from './pay/pay.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { HomeDetailComponent } from './home-detail/home-detail.component';
+import { UpdateUserInfoComponent } from './update-user-info/update-user-info.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'dashboard', component: DashboardComponent},
-  { path: 'detail-product', component: DetailProductComponent},
+  { path: 'detail-product/:id', component: DetailProductComponent},
   { path: 'pay', component: PayComponent,canActivate:[AuthGuard]},
-  { path: 'confirm', component: ConfirmComponent,canActivate:[AuthGuard]}
-
-
+  { path: 'confirm', component: ConfirmComponent,canActivate:[AuthGuard]},
+  { path:'home-detail',component:HomeDetailComponent},
+  {path:'user-info',component:UpdateUserInfoComponent}
 ];
 
 
 @NgModule({
-  declarations: [HomeComponent, DetailProductComponent, PayComponent, ConfirmComponent],
+  declarations: [HomeComponent, DetailProductComponent, PayComponent, ConfirmComponent, HomeDetailComponent, UpdateUserInfoComponent],
   imports: [
     CommonModule,
     ShareModule,

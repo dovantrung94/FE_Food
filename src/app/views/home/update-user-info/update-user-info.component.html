@@ -1,0 +1,57 @@
+<div class="screen-home mgt-content-df">
+    <div class="row">
+    <div class="card">
+        <div class="card-header">
+          <strong>User Update Form</strong>
+        </div>
+        <div class="card-body">
+          <form class="main_form" novalidate (ngSubmit)="onSubmit()" [formGroup]="updateProfileForm"
+            class="row justify-content-md-center">
+      
+            <div class="col-md-12">
+                  <label class="hoverable" for="fileInput">
+                    <img [src]="url ? url : '../../../assets/user/user_default.jpg'"> 
+                    <div class="hover-text">Choose file</div>
+                    <div class="background"></div>
+                  </label>
+                  <br/>
+                  <input id="fileInput" type='file' (change)="onSelectFile($event)">
+                  <!-- <button *ngIf="url" (click)="delete()" >delete</button> -->
+
+              <div class="form-group">
+                <label for="name">User Name:</label>
+                <input type="text" class="form-control" id="name" formControlName="username"
+                  placeholder="Enter your user name">
+              </div>
+      
+              <div class="form-group">
+                <label for="description">Email:</label>
+                <input type="text" class="form-control" id="description" formControlName="email"
+                  placeholder="Enter your email">
+              </div>
+
+              <div class="form-group">
+                <label for="description">Địa chỉ nhận hàng:</label>
+                <input type="text" class="form-control" id="description" formControlName="address"
+                  placeholder="Enter your address">
+              </div>
+      
+              <div class="form-group">
+                <label for="sex" class="col-form-label">Giới tính:</label>
+                    <select id="selectSex" name="select" class="form-control"  (change)="selectChangeSex($event)" size="1">
+                      <option value="" disabled selected >Please select</option>
+                      <option value="1">Nam</option>
+                      <option value="0">Nữ</option>
+                      <option value="2">Giới tính khác</option>
+                      </select>
+              </div>
+      
+              <div class="form-group">
+                  <button class="btn btn-sm btn-primary" type="submit">Update</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

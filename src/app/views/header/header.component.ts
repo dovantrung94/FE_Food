@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
     private dataService: DataService,
     private cartService: CartService
   ) {
+    this.cart={};
     this.dataService.getDropdownValue().subscribe((newValue) => {
       this.cartService.getCart().subscribe(data => {
         this.cart = data;

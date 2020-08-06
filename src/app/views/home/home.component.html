@@ -19,7 +19,7 @@
                             sure that shoppers get the best <br/>
                             value for their household.
                         </div>
-                        <div class="btn-slide">
+                        <div class="btn-slide" (click)="readMore()">
                             Read more
                         </div>
 
@@ -98,7 +98,7 @@
                         {{ item.name }}
                     </div>
                     <div class="txt-bottom">
-                        <span class="txt-price">${{ item.price }}</span>
+                        <span class="txt-price">{{ item.price }}đ</span>
                         <span class="txt-add">
                             <img src="../../../assets/images/ic_store_green.png"/>
                             Add to cart

@@ -53,7 +53,7 @@
                         <img src="../../../assets/product/{{cartItem.url}}"/>
                         <div class="infor-result">
                             <p class="rs-name">{{cartItem.name}}</p>
-                            <p class="rs-price">{{cartItem.price}}đ x {{cartItem.quantity}}</p>
+                            <p class="rs-price">{{cartItem.priceSale != null ? cartItem.priceSale : cartItem.price}}đ x {{cartItem.quantity}}</p>
                         </div>
                         <div class="remove-item" (click)="deleteItemCart(cartItem)" >x</div>
                     </div> 
@@ -77,7 +77,7 @@
             <div class="item-menu item-home">
                 Home
             </div>
-            <div class="item-menu item-tab1">
+            <!-- <div class="item-menu item-tab1">
                 Shop Features
             </div>
             <div class="item-menu item-tab2">
@@ -85,7 +85,7 @@
             </div>
             <div class="item-menu item-tab3">
                 Post Types
-            </div>
+            </div> -->
             <div class="item-menu item-tab4">
                 Contacts
             </div>

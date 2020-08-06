@@ -1,0 +1,41 @@
+<div class="screen-home mgt-content-df">
+    <div class="cmsmasters_woo_wrap_result"><div class="woocommerce-notices-wrapper"></div><p class="woocommerce-result-count">
+        Showing all 16 results</p>
+    <form class="woocommerce-ordering" method="get">
+        <select (change)="filterChanged($event.target.value)" name="orderby" class="orderby" aria-label="Shop order">
+                        <option value="menu_order" selected="selected">Sắp xếp mặc định</option>
+                        <option value="new">Sản phẩm mới nhất</option>
+                        <option value="price">Giá giảm dần</option>
+                        <option value="price-desc">Giá tăng dần</option>
+                        <option value="price">Sort by price: low to high</option>
+                        <option value="price-desc">Sort by price: high to low</option>
+                </select>
+        <input type="hidden" name="paged" value="1">
+        </form>
+    </div>
+    <div class="list-product-df row">
+        <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of listProduct">
+            <div class="item-product" (click)="goDetail(item.id)">
+                <div class="image-product">
+                    <img src="../../../assets/product/{{ item.url }}" />
+                </div>
+                <div class="infor-product">
+                    <div class="txt-type">
+                        {{ item.categoryName }}
+                    </div>
+                    <div class="txt-name">
+                        {{ item.name }}
+                    </div>
+                    <div class="txt-bottom">
+                        <span class="txt-price">{{ item.price }}đ</span>
+                        <span class="txt-add">
+                            <img src="../../../assets/images/ic_store_green.png" />
+                            Add to cart
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

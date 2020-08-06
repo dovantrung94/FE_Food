@@ -1,3 +1,4 @@
+import { ProductReview } from './../model/product_review';
 import { Product } from './../model/product';
 import { Observable } from 'rxjs';
 import { Injectable, Inject } from "@angular/core";
@@ -82,5 +83,21 @@ export class ProductService {
             headers: headers
         };
         return this.httpClient.get<Product>(this.baseUrlServer + "product/search/user?keyword="+keyword,options);
+    }
+
+    addComment(productReview:ProductReview){
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.post<any>(this.baseUrlServer +"user/addComment" ,productReview,{ headers });
+    }
+
+    geListtProductSortNew(key:number):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer + "admin/sort/"+key,options);
     }
 }

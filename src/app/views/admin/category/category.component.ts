@@ -43,7 +43,6 @@ export class CategoryComponent implements OnInit {
     });
   }
   createCategory(){
-    debugger;
     console.log(this.editCategoryForm.value);
     if (this.editCategoryForm.value.name === "")
     {

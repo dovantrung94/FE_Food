@@ -29,13 +29,6 @@ export class RegisterComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        // this.dataInforUser = this.commonServ.inforUser;
-        // if (this.dataInforUser) {
-        //     this.router.navigate(['/home']);
-        //     return;
-        // }
-
-
         this.dataRegister = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(5)]],

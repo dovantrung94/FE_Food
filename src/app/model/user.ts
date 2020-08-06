@@ -6,5 +6,7 @@ export class User {
     role:string;
     dateCreate: Date;
     dateUpdate: Date;
-    avatarUrl:String;
+    avatarUrl:string;
+    email:string;
+    address:string;
 }

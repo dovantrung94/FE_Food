@@ -15,16 +15,16 @@ export class PayComponent implements OnInit {
     constructor(
         private router: Router,
         private cartService:CartService
-    ) { }
+    ) {
+        this.cart={};
+     }
 
     ngOnInit(): void {
         this.cartService.getCart().subscribe(data=>{
-            debugger
             this.cart=data;
             this.listCartItem = data.cartItems;
         },
         error => {
-            debugger
             console.log(error);
         }
         )

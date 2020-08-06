@@ -20,7 +20,7 @@
                         {{cartItem.name}}
                     </div>
                 </td>
-                <td class="txt-price">{{cartItem.price}}</td>
+                <td class="txt-price">{{cartItem.priceSale != null ? cartItem.priceSale : cartItem.price}}đ</td>
                 <td class="txt-quantity">
                     <div class="btn-status">
                         <div class="nb-product">
