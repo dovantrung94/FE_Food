@@ -1,0 +1,203 @@
+.img-product img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .img-product {
+    height: 65px;
+    width: 65px;
+  }
+  .infor-product div {
+    display: inline-block;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .infor-product {
+    width: 20%;
+  }
+  .txt-price {
+    width: 20%;
+  }
+  
+  .txt-quantity {
+    width: 20%;
+  }
+  
+  .tb-product th {
+    background-color: #efefef;
+  }
+  
+  .infor-product .txt-name {
+    margin-left: 30px;
+    font-weight: 600;
+  }
+  
+  .txt-total {
+    color: green;
+    font-weight: 600;
+  }
+  
+  .txt-price {
+    font-weight: 500;
+  }
+  
+  .box-cart-total {
+    margin-top: 20px;
+  }
+  
+  .tb-result .txt-line1 {
+      background-color: #efefef;
+  }
+  
+  .tb-result .txt-line2 {
+      background-color: #e93f33;
+      color: white;
+  }
+  
+  .tb-result {
+      font-weight: 600;
+  }
+  
+  .tb-result tr td:first-child {
+      padding: 16px 130px 16px 20px;
+  }
+  
+  .tb-result tr td:last-child {
+      padding: 16px 20px 16px 250px;
+  }
+  
+  .screen-pay {
+      margin-bottom: 100px;
+  }
+  .btn-continute {
+    margin-top: 36px;
+    background-color: red;
+    width: 200px;
+    height: 56px;
+    text-align: center;
+    line-height: 56px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .btn-continute:hover {
+    opacity: 0.8;
+  }
+  .content-voucher input {
+    width: 50%;
+    height: 50px;
+    background: #efefef;
+    border: 1px solid #efefef;
+    padding: 16px;
+  }
+  
+  .content-voucher .btn-apply {
+    display: inline-block;
+    margin-left: 8px;
+    height: 50px;
+    width: 20%;
+    background-color: red;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .btn-update {
+    height: 50px;
+    background-color: red;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    float: right;
+    padding: 0 20px;
+  }
+  
+  .tb-product {
+    border: 1px solid #ddd;
+  }
+  
+  .box-delete {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 20px;
+    font-weight: 600;
+    color: gray;
+    font-size: 15px;
+    display: none!important;
+  }
+  
+  .tb-product tr {
+    cursor: pointer;
+  }
+  
+  .tb-product tr:hover .box-delete {
+    display: inline-block!important;
+  }
+  
+  .btn-status img {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .btn-status {
+    background-color: #efefef;
+    width: 100px;
+    height: 50px;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .btn-change-number {
+    width: 30px;
+    height: 20px;
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    display: none;
+  
+  }
+  .btn-status:hover .btn-change-number {
+    display: block;
+  }
+  
+  .btn-up {
+    top: 4px;
+    padding-top: 4px;
+  }
+  
+  .btn-down {
+    text-align: center;
+    bottom: 4px;
+  }
+  
+  .btn-down img {
+    margin-top: -12px;
+  }
+  .nb-product {position: absolute;top: 15px;}
+  
+  @media only screen and (max-width: 1200px) {
+    .tb-product {
+      width: 100vw;
+    }
+  }
+  
+  @media only screen and (min-width: 1200px) {
+    .tb-product {
+      width: 1200px;
+    }
+  }
+  
+  

@@ -1,3 +1,4 @@
+import { NumberDirective } from './../../directive/number_directive';
 import { LogoutComponent } from './logout/logout.component';
 import { CategoryComponent } from './category/category.component';
 import { ShareModule } from './../../share.module';
@@ -34,9 +35,9 @@ import { from } from 'rxjs';
 import { OrderComponent } from './order/order.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
-
 @NgModule({
-  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent,LogoutComponent, OrderComponent, ProductListComponent],
+  declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent,LogoutComponent,
+     OrderComponent, ProductListComponent,NumberDirective],
   imports: [
     CommonModule,
     ShareModule,

@@ -81,11 +81,11 @@
     </div>
 
     <div class="tt-main-home">
-      What's trending
+      What's new
     </div>
 
     <div class="list-product-df row">
-        <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of listProduct">
+        <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of productNew">
             <div class="item-product" (click)="goDetail(item.id)">
                 <div class="image-product">
                     <img src="../../../assets/product/{{ item.url }}"/>
@@ -109,5 +109,47 @@
             </div>
         </div>
     </div>
+    
+    <div class="box-img-intro">
+        <div class="img-intro">
+            <img src="../../../assets/images/2-1.jpg"/>
+        </div>
+        <div class="img-intro">
+            <img src="../../../assets/images/3-1.jpg"/>
+        </div>
+    </div>
+
+
+    <div class="tt-main-home">
+        What's trending
+      </div>
+  
+      <div class="list-product-df row">
+          <div class="col-lg-3 col-sm-4 col-6 box-item" *ngFor="let item of productTrending">
+              <div class="item-product" (click)="goDetail(item.id)">
+                  <div class="image-product">
+                      <img src="../../../assets/product/{{ item.url }}"/>
+                  </div>
+                  <div class="infor-product">
+                      <div class="txt-type">
+                          {{ item.categoryName }}
+                      </div>
+                      <div class="txt-name">
+                          {{ item.name }}
+                      </div>
+                      <div class="txt-bottom">
+                          <span class="txt-price">{{ item.price }}đ</span>
+                          <span class="txt-add">
+                              <img src="../../../assets/images/ic_store_green.png"/>
+                              Add to cart
+                          </span>
+  
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+
 
 </div>

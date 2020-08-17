@@ -6,6 +6,15 @@
       </div>
       <div>
           <form [formGroup]="dataRegister">
+
+            <div class="form-group box-input">
+                <img class="ic-16 ic-input" src="../../../../assets/images/ic_envelope.png" alt="ic email">
+                <input type="text" formControlName="name" placeholder="Press name..." class="form-control" [ngClass]="{ 'input-err-df': submitted && ckRegister.name.errors }" />
+                <div *ngIf="submitted && ckRegister.name.errors" class="txt-err-df ck-err">
+                    <div *ngIf="ckRegister.name.errors.required" class="email-required">Bạn chưa nhập tên</div>
+                </div>
+            </div>
+
               <div class="form-group box-input">
                   <img class="ic-16 ic-input" src="../../../../assets/images/ic_envelope.png" alt="ic email">
                   <input type="text" formControlName="email" placeholder="Press email..." class="form-control" [ngClass]="{ 'input-err-df': submitted && ckRegister.email.errors }" />
@@ -34,6 +43,18 @@
                   <p class="txt-err-df ck-err">{{ notiErr }}</p>
               </div>
 
+              <div class="form-group box-input">
+                <!-- <img class="ic-16 ic-input" src="../../../../assets/images/ic_key.png" alt="ic password"> -->
+                <select class="form-control" formControlName="sex" id="example-url-twt" [ngClass]="{ 'is-invalid': submitted && ckRegister.sex.errors }" > 
+                  <option [value]="0">Please Select</option>
+                  <option [value]="1">Nam</option>
+                  <option [value]="2">Nữ</option>
+                  <option [value]="3">Khác</option>
+                </select>
+                <div *ngIf="submitted && ckRegister.passConfirm.errors" class="txt-err-df ck-err">
+                    <div *ngIf="ckRegister.sex.required">Sex là bắt buộc</div>
+                </div>
+              </div>
               <div class="txt-center">
                   <button type="button" class="btn-login" (click)="goRegister()">Đăng ký</button>
               </div>

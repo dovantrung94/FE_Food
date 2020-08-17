@@ -26,6 +26,11 @@ export class PayComponent implements OnInit {
         },
         error => {
             console.log(error);
+            if(error.status == 401){
+                localStorage.removeItem("token");
+                localStorage.removeItem("userLogin");
+                this.router.navigate['login'];
+              }
         }
         )
     }

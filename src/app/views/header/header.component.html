@@ -6,28 +6,31 @@
                 Customer Care
             </div>
             <!-- chua dang nhap -->
-            <div class="box-login">
+            <div class="box-login" *ngIf="!showUser">
                 <div class="btn-sigup">Sign Up</div>
                 <div class="btn-login">Log In</div>
             </div>
 
             <!-- da dang nhap -->
-            <!-- <div class="box-login2">
+            <div class="box-login2" *ngIf="showUser">
                 <div class="infor-login">
                     <div class="box-avatar">
-                        <img src="../../../assets/images/product1.jpg"/>
+                        <img src="{{user.avatarUrl}}"/>
                     </div>
-                    <div class="name-user">Trung Đỗ</div>
+                    <div class="name-user">{{user.username}}</div>
                 </div>
                 <div class="infor-logout">
-                    <div class="btn-profile">
+                    <div class="btn-profile" (click)="updateInfo()">
                         Trang cá nhân
                     </div>
-                    <div class="btn-logout">
+                    <div class="btn-profile" (click)="historyOrder()">
+                        Lịch sử mua hàng
+                    </div>
+                    <div class="btn-logout" (click)="logout()">
                         Đăng xuất
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
   <div class="box-content-df">

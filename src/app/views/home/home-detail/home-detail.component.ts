@@ -18,7 +18,7 @@ export class HomeDetailComponent implements OnInit {
     private productService: ProductService,
     public commonServ : CommonService,
     private router: Router,
-    private dataService:DataService
+    private dataService:DataService 
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +27,11 @@ export class HomeDetailComponent implements OnInit {
         this.listProduct=data;
       },
       error=>{
-        
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
       }
     )
   }
@@ -39,7 +43,11 @@ export class HomeDetailComponent implements OnInit {
           this.listProduct=data;
         },
         error => {
-          
+          if(error.status == 401){
+            localStorage.removeItem("token");
+            localStorage.removeItem("userLogin");
+            this.router.navigate['login'];
+          }
         }
       )
     }else if(value=='price'){
@@ -49,7 +57,11 @@ export class HomeDetailComponent implements OnInit {
           this.listProduct=data;
         },
         error => {
-          
+          if(error.status == 401){
+            localStorage.removeItem("token");
+            localStorage.removeItem("userLogin");
+            this.router.navigate['login'];
+          }
         }
       )
     }else if(value=='price-desc'){
@@ -58,7 +70,11 @@ export class HomeDetailComponent implements OnInit {
           this.listProduct=data;
         },
         error => {
-          
+          if(error.status == 401){
+            localStorage.removeItem("token");
+            localStorage.removeItem("userLogin");
+            this.router.navigate['login'];
+          }
         }
       )
     }

@@ -1,3 +1,4 @@
+import { UploadFile } from './../model/uploadFile';
 import { ProductReview } from './../model/product_review';
 import { Product } from './../model/product';
 import { Observable } from 'rxjs';
@@ -23,6 +24,31 @@ export class ProductService {
         return this.httpClient.get<any>(this.baseUrlServer +"products" ,{ headers });
     }
 
+    getProductTrending():Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer +"products/trending" ,{ headers });
+    }
+
+    getProductNewHome():Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer +"products/new" ,{ headers });
+    }
+
+    getProductNewDetail():Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer +"products/new/detail" ,{ headers });
+    }
+
+
     getProductDetail(id:Number):Observable<any>{
         debugger;
         const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
@@ -39,7 +65,6 @@ export class ProductService {
         };
         return this.httpClient.post<any>(this.baseUrlServer +"admin/product/upload" ,product,{ headers });
     }
-
     getProductNew():Observable<Product>{
         const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {
@@ -47,6 +72,7 @@ export class ProductService {
         };
         return this.httpClient.get<Product>(this.baseUrlServer + "admin/product/new",options);
     }
+    
 
     uploadProduct(product:Product,image:File):Observable<any>{
         debugger;
@@ -55,8 +81,8 @@ export class ProductService {
         const options = {
             headers: headers
         };
-
         let params = new FormData(); 
+        console.log()
         params.append('image', image);
         params.append('name',product.name);
         params.append('price',String(product.price));
@@ -74,6 +100,8 @@ export class ProductService {
         }
         params.set('description',product.description);
         params.set('color',product.color);
+        console.log(params);
+        
         return this.httpClient.post<Product>(this.baseUrlServer + "admin/product/upload",params,options);
     }
 

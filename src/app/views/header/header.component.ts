@@ -1,3 +1,5 @@
+import { User } from './../../model/user';
+import { UserService } from './../../service/user.service';
 import { CartService } from './../../service/cart.service';
 import { DataService } from './../../service/data.service';
 import { ToastService } from './../../service/toast.service';
@@ -17,16 +19,19 @@ export class HeaderComponent implements OnInit {
   searchKeyword: string;
   showResult = false;
   noDataResult = false;
+  showUser = false;
   productSearch: [];
+  user = new User();
   cart: any;
   listCartItem = [];
   constructor(private router: Router,
     private productService: ProductService,
     private toastService: ToastService,
     private dataService: DataService,
-    private cartService: CartService
+    private cartService: CartService,
+    private userService: UserService
   ) {
-    this.cart={};
+    this.cart = {};
     this.dataService.getDropdownValue().subscribe((newValue) => {
       this.cartService.getCart().subscribe(data => {
         this.cart = data;
@@ -34,6 +39,26 @@ export class HeaderComponent implements OnInit {
       },
         error => {
           console.log(error);
+          if (error.status == 401) {
+            localStorage.removeItem("token");
+            localStorage.removeItem("userLogin");
+            this.router.navigate['login'];
+          }
+        }
+      )
+    });
+    this.dataService.getcartValue().subscribe((newCart) => {
+      this.cartService.getCart().subscribe(data => {
+        this.cart = data;
+        this.listCartItem = data.cartItems;
+      },
+        error => {
+          console.log(error);
+          if(error.status == 401){
+            localStorage.removeItem("token");
+            localStorage.removeItem("userLogin");
+            this.router.navigate['login'];
+          }
         }
       )
     });
@@ -47,8 +72,28 @@ export class HeaderComponent implements OnInit {
     },
       error => {
         console.log(error);
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
       }
     )
+
+    if (localStorage.getItem("userLogin") != undefined) {
+      this.showUser = true;
+    }
+    this.userService.getUserInfo().subscribe(data => {
+      this.user = data;
+    },
+      error => {
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
+      })
+
   }
 
   foodMarket() {
@@ -65,7 +110,7 @@ export class HeaderComponent implements OnInit {
   onFocusOutEvent() {
     setTimeout(() => {
       this.showResult = false;
-    }, 100);
+    }, 200);
 
   }
   searchChangeEvent(data: any) {
@@ -87,9 +132,10 @@ export class HeaderComponent implements OnInit {
   }
 
   goDetailProduct(id) {
-    debugger;
-    this.dataService.changeProductId(id);
-    this.router.navigate(['home/detail-product']);
+    // debugger;
+    // this.dataService.changeProductId(id);
+    // this.router.navigate(['home/detail-product']);
+    this.router.navigate(['home/detail-product', id]);
 
   }
   deleteItemCart(cartItem: any) {
@@ -101,6 +147,11 @@ export class HeaderComponent implements OnInit {
       },
       error => {
         this.toastService.showError("Error", "Xóa không thành công");
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
       }
     )
   }
@@ -111,6 +162,11 @@ export class HeaderComponent implements OnInit {
     },
       error => {
         console.log(error);
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
       }
     )
   }
@@ -121,5 +177,18 @@ export class HeaderComponent implements OnInit {
 
   checkOut() {
     this.router.navigate(['home/confirm']);
+  }
+
+  updateInfo() {
+    this.router.navigate(['home/user-info']);
+  }
+  logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userLogin");
+    this.router.navigate(['login']);
+  }
+
+  historyOrder() {
+    this.router.navigate(['home/history']);
   }
 }

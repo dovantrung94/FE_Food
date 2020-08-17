@@ -10,6 +10,7 @@ import { PayComponent } from './pay/pay.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { HomeDetailComponent } from './home-detail/home-detail.component';
 import { UpdateUserInfoComponent } from './update-user-info/update-user-info.component';
+import { HistoryOrderComponent } from './history-order/history-order.component';
 
 
 const routes: Routes = [
@@ -19,12 +20,13 @@ const routes: Routes = [
   { path: 'pay', component: PayComponent,canActivate:[AuthGuard]},
   { path: 'confirm', component: ConfirmComponent,canActivate:[AuthGuard]},
   { path:'home-detail',component:HomeDetailComponent},
-  {path:'user-info',component:UpdateUserInfoComponent}
+  {path:'user-info',component:UpdateUserInfoComponent},
+  {path:'history',component:HistoryOrderComponent}
 ];
 
 
 @NgModule({
-  declarations: [HomeComponent, DetailProductComponent, PayComponent, ConfirmComponent, HomeDetailComponent, UpdateUserInfoComponent],
+  declarations: [HomeComponent, DetailProductComponent, PayComponent, ConfirmComponent, HomeDetailComponent, UpdateUserInfoComponent, HistoryOrderComponent],
   imports: [
     CommonModule,
     ShareModule,

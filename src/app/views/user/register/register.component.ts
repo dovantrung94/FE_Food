@@ -24,15 +24,15 @@ export class RegisterComponent implements OnInit {
         private formBuilder : FormBuilder,
         public commonServ   : CommonService,
 
-
-
     ) { }
 
     ngOnInit(): void {
         this.dataRegister = this.formBuilder.group({
+            name:['',Validators.required],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(5)]],
-            passConfirm: ['', Validators.required]
+            passConfirm: ['', Validators.required],
+            sex:['',Validators.required]
         }, {
             validator: MustMatch('password', 'passConfirm')
         });

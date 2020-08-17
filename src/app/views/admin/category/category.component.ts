@@ -66,9 +66,8 @@ export class CategoryComponent implements OnInit {
     }
   }
   openModal(targetModal, category) {
-    debugger;
+    
     $('#createCategory').modal('show');
-
     this.editCategoryForm.setValue({
       name: category.name,
       id : category.id

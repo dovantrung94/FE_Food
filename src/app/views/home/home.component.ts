@@ -13,6 +13,8 @@ import { CommonService } from '../../service/common.service';
 export class HomeComponent implements OnInit {
     user :Object
     listProduct =[];
+    productNew =[];
+    productTrending=[];
     constructor(
         private productService: ProductService,
         public commonServ : CommonService,
@@ -21,12 +23,31 @@ export class HomeComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.productService.getListProduct().subscribe(
+        this.productService.getProductNewHome().subscribe(
             data =>{
-              this.listProduct=data;
+              debugger;
+              this.productNew=data;
             },
             error=>{
-              console.log(error);
+              if(error.status == 401){
+                localStorage.removeItem("token");
+                localStorage.removeItem("userLogin");
+                this.router.navigate['login'];
+              }
+            }
+          )
+
+          this.productService.getProductTrending().subscribe(
+            data =>{
+              debugger;
+              this.productTrending=data;
+            },
+            error=>{
+              if(error.status == 401){
+                localStorage.removeItem("token");
+                localStorage.removeItem("userLogin");
+                this.router.navigate['login'];
+              }
             }
           )
     }

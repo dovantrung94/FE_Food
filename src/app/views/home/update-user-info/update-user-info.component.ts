@@ -41,6 +41,11 @@ export class UpdateUserInfoComponent implements OnInit {
     },
     error => {
       this.toastService.showError("Error","Không lấy được thông tin người dùng");
+      if(error.status == 401){
+        localStorage.removeItem("token");
+        localStorage.removeItem("userLogin");
+        this.router.navigate['login'];
+      }
     }
     )
   }
@@ -71,6 +76,11 @@ export class UpdateUserInfoComponent implements OnInit {
       this.router.navigate(['home']);
     },error=>{
       this.toastService.showSuccess("Error","Cập nhật thất bại");
+      if(error.status == 401){
+        localStorage.removeItem("token");
+        localStorage.removeItem("userLogin");
+        this.router.navigate['login'];
+      }
     })
 
 

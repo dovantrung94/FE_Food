@@ -31,22 +31,11 @@
             <div class="tt-cate">
                 Product categories
             </div>
-            <div class="list-category">
+            <div class="list-category" *ngFor="let category of categorys" >
                 <div>
-                    Uncategorized
+                    {{category.name}}
                 </div>
-                <div>
-                    Uncategorized
-                </div>
-                <div>
-                    Uncategorized
-                </div>
-                <div>
-                    Uncategorized
-                </div>
-                <div>
-                    Uncategorized
-                </div>
+
             </div>
         </div>
     </div>

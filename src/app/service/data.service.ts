@@ -25,4 +25,15 @@ export class DataService {
         this.dropdownValue.next(value);
     }
 
+    private cartValue: Subject<string> = new Subject();
+
+    public getcartValue() : Observable<any>{
+        return this.cartValue.asObservable();
+    }
+
+    public setcartValue(value: string) : void {
+        this.cartValue.next(value);
+    }
+
+
 }

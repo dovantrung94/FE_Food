@@ -1,3 +1,5 @@
+import { error } from '@angular/compiler/src/util';
+import { CategoryService } from 'src/app/service/category.service';
 import { Star } from './../../../model/star';
 import { async } from '@angular/core/testing';
 import { ProductReview } from './../../../model/product_review';
@@ -10,7 +12,7 @@ import { ProductService } from './../../../service/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Cart } from 'src/app/model/cart';
-import { map, param } from 'jquery';
+import { map, param, data } from 'jquery';
 declare var $: any;
 
 @Component({
@@ -25,6 +27,7 @@ export class DetailProductComponent implements OnInit {
     numberProduct = 1;
     listProduct =[];
     productReview=[];
+    categorys=[];
     cart:any;
     idNumber:number;
     voteNumber:number;
@@ -34,54 +37,16 @@ export class DetailProductComponent implements OnInit {
       private productService:ProductService,
       private dataService:DataService,
       private cartService:CartService,
-      private toastService:ToastService
+      private toastService:ToastService,
+      private categoryService:CategoryService
     ) { 
       this.cart={};
       this.productDetail={};
       this.dataService.id.subscribe(productId => {
         this.productService.getProductDetail(productId).subscribe(
             data =>{
-            
               this.productReview=data.productReviews;
               this.productDetail=data;
-              // for (var _i = 0; _i < this.productDetail.productReviews.length; _i++) {
-              //   for(let k=0;k<5;k++){
-              //     if(k<=this.productDetail.productReviews[_i].vote){
-              //       if(k==0){
-              //         this.productReview[_i].star1='starHighLight';
-              //       }
-              //       if(k==1){
-              //         this.productReview[_i].star2='starHighLight';
-              //       }
-              //       if(k==2){
-              //         this.productReview[_i].star3='starHighLight';
-              //       }
-              //       if(k==3){
-              //         this.productReview[_i].star4='starHighLight';
-              //       }
-              //       if(k==4){
-              //         this.productReview[_i].star5='starHighLight';
-              //       }
-              //     }else{
-              //       if(k==0){
-              //         this.productReview[_i].star1='starNoHighLigh';
-              //       }
-              //       if(k==1){
-              //         this.productReview[_i].star2='starNoHighLigh';
-              //       }
-              //       if(k==2){
-              //         this.productReview[_i].star3='starNoHighLigh';
-              //       }
-              //       if(k==3){
-              //         this.productReview[_i].star4='starNoHighLigh';
-              //       }
-              //       if(k==4){
-              //         this.productReview[_i].star5='starNoHighLigh';
-              //       }
-              //     }
-             
-              //   }
-            // }
             },
             error=>{
               console.log(error);
@@ -104,59 +69,40 @@ export class DetailProductComponent implements OnInit {
               debugger;
               this.productReview=data.productReviews;
               this.productDetail=data;
-           
-            //   for (var _i = 0; _i < this.productDetail.productReviews.length; _i++) {
-
-            //     for(let k=0;k<5;k++){
-            //       if(k<=this.productDetail.productReviews[_i].vote){
-            //         if(k==0){
-            //           this.productReview[_i].star1='starHighLight';
-            //         }
-            //         if(k==1){
-            //           this.productReview[_i].star2='starHighLight';
-            //         }
-            //         if(k==2){
-            //           this.productReview[_i].star3='starHighLight';
-            //         }
-            //         if(k==3){
-            //           this.productReview[_i].star4='starHighLight';
-            //         }
-            //         if(k==4){
-            //           this.productReview[_i].star5='starHighLight';
-            //         }
-            //       }else{
-            //         if(k==0){
-            //           this.productReview[_i].star1='starNoHighLigh';
-            //         }
-            //         if(k==1){
-            //           this.productReview[_i].star2='starNoHighLigh';
-            //         }
-            //         if(k==2){
-            //           this.productReview[_i].star3='starNoHighLigh';
-            //         }
-            //         if(k==3){
-            //           this.productReview[_i].star4='starNoHighLigh';
-            //         }
-            //         if(k==4){
-            //           this.productReview[_i].star5='starNoHighLigh';
-            //         }
-            //       }
-             
-            //     }
-            // }
             },
             error=>{
               console.log(error);
+              if(error.status == 401){
+                localStorage.removeItem("token");
+                localStorage.removeItem("userLogin");
+                this.router.navigate['login'];
+              }
             }
           )
-          this.productService.getListProduct().subscribe(
+          this.productService.getProductNewDetail().subscribe(
             data =>{
               this.listProduct=data;
             },
             error=>{
               console.log(error);
+              if(error.status == 401){
+                localStorage.removeItem("token");
+                localStorage.removeItem("userLogin");
+                this.router.navigate['login'];
+              }
             }
           )
+        
+          this.categoryService.getAllCategory().subscribe(data=>{
+            this.categorys=data;
+          },error=>{
+            if(error.status == 401){
+              localStorage.removeItem("token");
+              localStorage.removeItem("userLogin");
+              this.router.navigate['login'];
+            }
+          })
+
     }
 
     changeChoose(value) {
@@ -210,6 +156,11 @@ export class DetailProductComponent implements OnInit {
       },
       error=>{
         this.toastService.showError("Cart","Thêm bình luận thất bại");
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
       }
     );
   }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { error } from '@angular/compiler/src/util';
 import { data } from 'jquery';
 import { ToastService } from './../../../service/toast.service';
@@ -13,7 +14,8 @@ export class OrderComponent implements OnInit {
   orders = [];
   constructor(
     private orderService: OrderService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +25,11 @@ export class OrderComponent implements OnInit {
         },
         error =>{
           this.toastService.showError("Error","Get List Order Fail");
+          if(error.status == 401){
+            localStorage.removeItem("token");
+            localStorage.removeItem("userLogin");
+            this.router.navigate['login'];
+          }
         }
       )
   }

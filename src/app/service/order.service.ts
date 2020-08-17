@@ -30,4 +30,28 @@ export class OrderService {
         };
         return this.httpClient.get<any>(this.baseUrlServer +"admin/order?page=0&size=10",{ headers });
     }
+    getOrderUser():Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer +"order",{ headers });
+    }
+    getOrderDetail(id:number):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer +"order/detail/"+id,{ headers });
+    }
+
+    cancelOrder(id:number):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        let order= new Order();
+        order.id=id;
+        return this.httpClient.put<any>(this.baseUrlServer +"order/cancel",order,{ headers });
+    }
 }

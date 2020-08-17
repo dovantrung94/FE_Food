@@ -2,6 +2,7 @@ import { User } from './../../../model/user';
 import { UserService } from './../../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +18,9 @@ export class UserComponent implements OnInit {
   sex:string;
   role:string;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+    private router:Router
+    ) {
     this.edit=false;
   }
 
@@ -28,7 +31,11 @@ export class UserComponent implements OnInit {
       },
       error => {
         console.log(error);
-      
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
       }
     )
     this.editUser = new FormGroup({

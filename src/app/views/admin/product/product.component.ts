@@ -1,11 +1,12 @@
+import { Router } from '@angular/router';
 import { ToastService } from './../../../service/toast.service';
 import { CategoryService } from './../../../service/category.service';
 import { Product } from './../../../model/product';
 import { error } from '@angular/compiler/src/util';
 import { ProductService } from './../../../service/product.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-
+import { FormGroup, FormControl,FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -13,13 +14,19 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ProductComponent implements OnInit {
 
+
   product =new Product();
   categorys=[];
   productFrom : FormGroup;
-
+  submitted = false;
   image:File;
   
-  constructor(private productService :ProductService,private categoryService :CategoryService,private toastService:ToastService) { }
+  constructor(private productService :ProductService,
+    private categoryService :CategoryService,
+    private toastService:ToastService,
+    private router: Router,
+    private fb:FormBuilder
+    ) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategory().subscribe(
@@ -32,20 +39,38 @@ export class ProductComponent implements OnInit {
         console.log(error);
       }
     )
-    this.productFrom = new FormGroup({
-      name: new FormControl(),
-      content: new FormControl(),
-      price: new FormControl(),
-      priceSale: new FormControl(),
-      image: new FormControl(),
-      categoryId: new FormControl(),
-      weight: new FormControl(),
-      color:new FormControl(),
-      composition:new FormControl(),
-      volume:new FormControl(),
-      description:new FormControl()
-    });
+
+    this.productFrom=this.fb.group({
+      name:['',Validators.required],
+      content:['',Validators.required],
+      price:['',Validators.required],
+      priceSale:[],
+      image:[],
+      categoryId:['',Validators.required],
+      weight:[''],
+      color:[''],
+      composition:[''],
+      volume:[''],
+      description:['',Validators.required]
+
+    })
+
+    // this.productFrom = new FormGroup({
+    //   name: new FormControl(),
+    //   content: new FormControl(),
+    //   price: new FormControl(),
+    //   priceSale: new FormControl(),
+    //   image: new FormControl(),
+    //   categoryId: new FormControl(),
+    //   weight: new FormControl(),
+    //   color:new FormControl(),
+    //   composition:new FormControl(),
+    //   volume:new FormControl(),
+    //   description:new FormControl()
+    // });
   }
+
+  get f() { return this.productFrom.controls; }
 
   onFileChange(event) {
      debugger;
@@ -56,6 +81,13 @@ export class ProductComponent implements OnInit {
   }
 
   onSubmit() {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.productFrom.invalid) {
+        return;
+    }
     debugger;
     console.log(this.productFrom);
     this.product =Object.assign(this.product,this.productFrom.value);
@@ -66,6 +98,11 @@ export class ProductComponent implements OnInit {
       },
       error=>{
         this.toastService.showError("Image","Upload image Error");
+        if(error.status == 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("userLogin");
+          this.router.navigate['login'];
+        }
       }
     )
 
