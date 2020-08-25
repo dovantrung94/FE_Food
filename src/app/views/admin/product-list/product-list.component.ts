@@ -30,5 +30,10 @@ export class ProductListComponent implements OnInit {
       }
     )
   }
+  updateProduct(item:any){
 
+  }
+  deleteProduct(id:any){
+    
+  }
 }

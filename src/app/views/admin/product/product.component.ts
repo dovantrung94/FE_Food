@@ -55,19 +55,6 @@ export class ProductComponent implements OnInit {
 
     })
 
-    // this.productFrom = new FormGroup({
-    //   name: new FormControl(),
-    //   content: new FormControl(),
-    //   price: new FormControl(),
-    //   priceSale: new FormControl(),
-    //   image: new FormControl(),
-    //   categoryId: new FormControl(),
-    //   weight: new FormControl(),
-    //   color:new FormControl(),
-    //   composition:new FormControl(),
-    //   volume:new FormControl(),
-    //   description:new FormControl()
-    // });
   }
 
   get f() { return this.productFrom.controls; }

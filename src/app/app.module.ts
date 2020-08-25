@@ -1,3 +1,4 @@
+import { ForgetComponent } from './views/user/forget-password/forget.component';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,8 @@ import { HeaderComponent } from './views/header/header.component';
     NavbarComponent,
     DashboardComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ForgetComponent
   ],
   imports: [
     BrowserModule,

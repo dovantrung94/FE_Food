@@ -12,6 +12,7 @@
                     <th>Ngày đặt hàng</th>
                     <th>Ngày cập nhật</th>
                     <th>Trạng thái</th>
+                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,10 +22,14 @@
                     <td>{{order.address}}</td>
                     <td>{{order.dateCreate}}</td>
                     <td>{{order.dateUpdate}}</td>
-                    <td>{{order.status}}</td>
+                    <td [ngSwitch]="order.status">
+                        <span *ngSwitchCase="0">Đặt hàng thành công</span>
+                        <span *ngSwitchCase="1">Đang giao hàng</span>
+                        <span *ngSwitchCase="2">Hoàn thành </span>
+                        <span *ngSwitchCase="3">Đã Hủy </span>
+                    </td>
+                    <td (click)="orderDetailOpen(order.id)" class="txt-total"><span class="icon-pencil icons"></span></td>
                 </tr>
-
-
             </tbody>
         </table>
         <ul class="pagination">

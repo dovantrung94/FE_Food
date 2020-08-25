@@ -28,6 +28,16 @@ export class UserService {
         };
         return this.httpClient.post<any>(this.baseUrlServer + "admin/user",user,options)
     }
+    createUserByGuest(user:User):Observable<any>{
+        return this.httpClient.post<any>(this.baseUrlServer + "guest/user",user)
+    }
+    forgetPassword(email:string):Observable<any>{
+        const headers = new HttpHeaders();
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.post<any>(this.baseUrlServer + "user/forget/password/"+email,options)
+    }
 
     getUserInfo():Observable<any>{
         const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);

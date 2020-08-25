@@ -1,3 +1,5 @@
+import { data } from 'jquery';
+import { UserService } from './../../../service/user.service';
 // import { ToastService } from './../../../service/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -18,7 +20,7 @@ declare var $: any;
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+    forgetpassowrd: FormGroup;
     dataLogin: FormGroup;
     notiErr = '';
     submitted = false;
@@ -29,15 +31,20 @@ export class LoginComponent implements OnInit {
         private toastService : ToastService,
         private router: Router,
         private formBuilder : FormBuilder,
-        private localServ : LocalStorageService
+        private localServ : LocalStorageService,
+        private userService:UserService
     ) { }
 
     ngOnInit(): void {
+        this.forgetpassowrd=this.formBuilder.group({
+            'email'     : new FormControl('', [ Validators.required, Validators.email]),
+        })
         this.dataLogin = this.formBuilder.group({
             'email'     : new FormControl('', [ Validators.required, Validators.email]),
             'password'  : new FormControl('', [ Validators.required, Validators.minLength(6)])
         });
         this.dataLogin.valueChanges.subscribe(data => this.notiErr = '');
+  
     }
 
     get ckLogin() {
@@ -80,134 +87,23 @@ export class LoginComponent implements OnInit {
 
     //click button login thì lưu user vào localstorage
     onSubmit() {
-    //   console.log(this.loginForm.value);
 
-    //   this.loginService.login(this.loginForm.value.userName, this.loginForm.value.password).subscribe(
-    //     data =>{
-
-    //       localStorage.setItem("token",data.token);
-    //       this.router.navigate(['home']);
-
-    //     },
-    //     error =>{
-    //       this.toastService.showError("Đăng nhập không thành công ","Login Fail");
-    //       console.log("Login Fail");
-    //     }
-    //   )
 
     }
 
-    // dataLogin: FormGroup;
-    // notiErr = '';
-
-    // submitted = false;
-
-    // dataInforUser = {};
-
-    // constructor(
-    //     // public commonServ   : CommonService,
-    //     private router      : Router,
-    //     private formBuilder : FormBuilder,
-    //     // private userServ    : UserService,
-    //     // private encryptionServ : EncryptionService,
-    //     // private cookieServ  : CookieService,
-    //     // private localServ   : LocalStorageService,
-    //     // private broadcaster : BroadcasterService,
-    //     // private authService : AuthService,
-    //     private loginService : LoginService
-    // ) { }
-
-    // ngOnInit() {
-    //     // scroll top
-    //     window.scroll({
-    //         top: 0,
-    //         left: 0,
-    //         behavior: 'smooth'
-    //     });
-
-    //     // this.commonServ.loginSocial = false;
-
-    //     // this.dataInforUser = this.commonServ.inforUser;
-    //     // if (this.dataInforUser) {
-    //     //     this.router.navigate(['/home']);
-    //     //     return;
-    //     // }
-
-    //     // this.broadcaster.on('login-success').subscribe(() => {
-    //     //     this.dataInforUser = this.commonServ.inforUser;
-
-    //     //     if (this.dataInforUser) {
-    //     //         this.router.navigate(['/home']);
-    //     //         return;
-    //     //     }
-    //     // });
-
-    //     this.dataLogin = this.formBuilder.group({
-    //         'email'     : new FormControl('', [ Validators.required, Validators.email]),
-    //         'password'  : new FormControl('', [ Validators.required, Validators.minLength(6)])
-    //     });
-    //     this.dataLogin.valueChanges.subscribe(data => this.notiErr = '');
-    // }
-
-    // get ckLogin() {
-    //     return this.dataLogin.controls;
-    // }
-
-    // loginSuccess(value) {
-    //     if (value.status == 302) {
-    //         this.notiErr = "Tài khoản chưa được kích hoạt";
-    //     } else if (value.status == 200) {
-    //         this.commonServ.alert.notify = "Đăng nhập thành công";
-
-    //         var tokenId = value.result.tokenId;
-    //         tokenId = this.encryptionServ.encode(tokenId);
-    //         this.cookieServ.setCookie('tokenId', tokenId);
-
-    //         $('.notify-current-df').fadeIn(200);
-    //         setTimeout(() => {
-    //             $('.notify-current-df').fadeOut(200);
-    //         }, 500);
-
-    //         var idUser = value.result.userId;
-    //         this.localServ.setItem('idUser', idUser);
-    //         this.commonServ.inforUser = value.result;
-
-    //         this.broadcaster.broadcast('login-success');
-    //         this.router.navigate(['/home']);
-    //     } else {
-    //         this.notiErr = "Tài khoản hoặc mật khẩu không đúng";
-    //     }
-
-    // }
-
-    // loginWithEmail() {
-
-    //     this.submitted = true;
-
-    //     if (this.dataLogin.invalid) {
-    //         return;
-    //     }
-    //     $(".btn-login").addClass("button-disabled");
-
-    //     var inforLogin = this.dataLogin.value;
-    //     this.userServ.login(inforLogin.email, inforLogin.password, (res) => {
-    //         $(".btn-login").removeClass("button-disabled");
-
-    //         this.loginSuccess(res);
-    //     });
-
-    // }
-
-    // enterLogin(event) {
-    //     if (event.key === "Enter") {
-    //         this.loginWithEmail();
-    //     }
-    // }
 
     resetPassword() {
         // $('#resetPassword').modal('show');
+        
     }
-
+    forgetPassword(){
+        this.userService.forgetPassword(this.forgetpassowrd.value.email).subscribe(data=>{
+            console.log(data);
+        },
+        error=>{
+            console.log(error);
+        })
+    }
 
 
 }

@@ -1,3 +1,8 @@
+import { ToastService } from './../../../service/toast.service';
+import { error } from '@angular/compiler/src/util';
+import { data } from 'jquery';
+import { UserService } from './../../../service/user.service';
+import { User } from './../../../model/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,31 +13,33 @@ declare var $: any;
 
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss', '../login/login.component.scss']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss', '../login/login.component.scss']
 })
 export class RegisterComponent implements OnInit {
     dataRegister: FormGroup;
     dataInforUser = {};
-
     submitted = false;
-
     notiErr = '';
+
     constructor(
-        private router      : Router,
-        private formBuilder : FormBuilder,
-        public commonServ   : CommonService,
+        private router: Router,
+        private formBuilder: FormBuilder,
+        public commonServ: CommonService,
+        private userService: UserService,
+        private toastService: ToastService
 
     ) { }
 
     ngOnInit(): void {
         this.dataRegister = this.formBuilder.group({
-            name:['',Validators.required],
+            name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(5)]],
             passConfirm: ['', Validators.required],
-            sex:['',Validators.required]
+            sex: ['', Validators.required],
+            address: ['', Validators.required]
         }, {
             validator: MustMatch('password', 'passConfirm')
         });
@@ -50,48 +57,49 @@ export class RegisterComponent implements OnInit {
     }
 
     goRegister() {
-      this.submitted = true;
+        this.submitted = true;
 
-      if (this.dataRegister.invalid) {
-          return;
-      }
+        if (this.dataRegister.invalid) {
+            return;
+        }
 
-      $(".btn-login").addClass("button-disabled");
-
-      var inforRegister = this.dataRegister.value;
-      // this.userServ.register(inforRegister.email, inforRegister.password,this.commonServ.langWeb, data => {
-      //     $(".btn-login").removeClass("button-disabled");
-      //     console.log(data);
-      //     if (data.status == 304) {
-      //         this.notiErr = "Tài khoản email đã được sử dụng.";
-      //     } else if (data.status == 302) {
-      //         this.notiErr = "Có lỗi trong quá trình đăng ký.";
-      //     } else if (data.status == 200) {
-      //         this.commonServ.alert.notify = "Bạn đã đăng ký tài khoản thành công. Hãy vào địa chỉ mail đăng ký tài khoản này để xác thực tài khoản.";
-      //         $('.notify-current-df').fadeIn(200);
-      //         setTimeout(function () {
-      //             $('.notify-current-df').fadeOut(200);
-      //         }, 4000);
-      //     }
-      // })
-  }
+        $(".btn-login").addClass("button-disabled");
+        let user = new User;
+        debugger;
+        user.username = this.dataRegister.value.name;
+        user.password = this.dataRegister.value.password;
+        user.sex = this.dataRegister.value.sex;
+        user.role = '0';
+        user.email = this.dataRegister.value.email;
+        user.address = this.dataRegister.value.address;
+        this.userService.createUserByGuest(user).subscribe(data => {
+            this.toastService.showSuccess("Success", "Đăng kí thành công");
+            this.router.navigate[''];
+        }, error => {
+            if(error.error.statusRegister ==2 ){
+                this.toastService.showError("Email", "Email đã tồn tại");
+            }else{
+                this.toastService.showError("Email", "Đăng kí không thành công");
+            }
+        })
+    }
 
 }
 export function MustMatch(controlName: string, matchingControlName: string) {
-  return (formGroup: FormGroup) => {
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
 
-      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-          // return if another validator has already found an error on the matchingControl
-          return;
-      }
+        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+            // return if another validator has already found an error on the matchingControl
+            return;
+        }
 
-      // set error on matchingControl if validation fails
-      if (control.value !== matchingControl.value) {
-          matchingControl.setErrors({ mustMatch: true });
-      } else {
-          matchingControl.setErrors(null);
-      }
-  }
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ mustMatch: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
+    }
 }

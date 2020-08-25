@@ -50,6 +50,8 @@ export class UserComponent implements OnInit {
     debugger;
     this.user =Object.assign(this.user,this.editUser.value);
     this.editUser.reset();
+    console.log( $('#selectSex').val());
+    $('#selectSex').val();
     $('#createUser').modal('hide');
   }
   onSubmit() {

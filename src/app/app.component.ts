@@ -42,7 +42,7 @@ export class AppComponent {
             }
 
             if (val instanceof NavigationEnd) {
-                if (val.url == '/login' || val.url == '/register' || val.url == '/') {
+                if (val.url == '/login' || val.url == '/forgot' || val.url == '/register' || val.url == '/') {
                     document.body.style.backgroundImage  = 'url(assets/images/bg_login.jpg)';
                 } else {
                     document.body.style.background = 'white';
