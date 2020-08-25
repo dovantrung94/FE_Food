@@ -68,7 +68,6 @@ export class UpdateUserInfoComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
     console.log(this.updateProfileForm);
     this.user =Object.assign(this.user,this.updateProfileForm.value);
     this.userServcie.updateUser(this.user,this.image).subscribe(data=>{

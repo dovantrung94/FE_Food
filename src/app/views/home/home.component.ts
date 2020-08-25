@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         this.productService.getProductNewHome().subscribe(
             data =>{
-              debugger;
               this.productNew=data;
             },
             error=>{
@@ -39,7 +38,6 @@ export class HomeComponent implements OnInit {
 
           this.productService.getProductTrending().subscribe(
             data =>{
-              debugger;
               this.productTrending=data;
             },
             error=>{

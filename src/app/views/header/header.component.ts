@@ -191,4 +191,10 @@ export class HeaderComponent implements OnInit {
   historyOrder() {
     this.router.navigate(['home/history']);
   }
+  singUp(){
+    this.router.navigate(['register']);
+  }
+  logIn(){
+    this.router.navigate(['login']);
+  }
 }

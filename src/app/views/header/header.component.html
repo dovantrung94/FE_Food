@@ -7,15 +7,15 @@
             </div>
             <!-- chua dang nhap -->
             <div class="box-login" *ngIf="!showUser">
-                <div class="btn-sigup">Sign Up</div>
-                <div class="btn-login">Log In</div>
+                <div class="btn-sigup" (click)="singUp()" >Sign Up</div>
+                <div class="btn-login" (click)="logIn()" >Log In</div>
             </div>
 
             <!-- da dang nhap -->
             <div class="box-login2" *ngIf="showUser">
                 <div class="infor-login">
                     <div class="box-avatar">
-                        <img src="{{user.avatarUrl}}"/>
+                        <img src="{{user.avatarUrl ? user.avatarUrl : '../../../assets/user/user_default.jpg'}}"/>
                     </div>
                     <div class="name-user">{{user.username}}</div>
                 </div>
