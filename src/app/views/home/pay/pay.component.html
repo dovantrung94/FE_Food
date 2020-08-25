@@ -10,7 +10,7 @@
             </tr>
             <tr *ngFor="let cartItem of listCartItem" >
                 <td class="infor-product">
-                    <div class="box-delete">
+                    <div class="box-delete" (click)="deleteItemCart(cartItem)"  >
                         x
                     </div>
                     <div class="img-product">
@@ -22,17 +22,17 @@
                 </td>
                 <td class="txt-price">{{cartItem.priceSale != null ? cartItem.priceSale : cartItem.price}}đ</td>
                 <td class="txt-quantity">
-                    <div class="btn-status">
-                        <div class="nb-product">
+                    <!-- <div class="btn-status">
+                        <div class="nb-product"> -->
                           {{cartItem.quantity}}
-                        </div>
+                        <!-- </div>
                         <div class="btn-up btn-change-number" (click)="changeNumber('add')">
                             <img src="../../../../assets/images/ic_up.png"/>
                         </div>
                         <div class="btn-down btn-change-number" (click)="changeNumber('delete')">
                             <img src="../../../../assets/images/ic_down.png"/>
                         </div>
-                    </div>
+                    </div> -->
                 </td>
                 <td class="txt-total">{{cartItem.price * cartItem.quantity}}</td>
             </tr>

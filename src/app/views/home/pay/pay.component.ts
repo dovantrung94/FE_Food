@@ -2,6 +2,7 @@ import { error } from '@angular/compiler/src/util';
 import { CartService } from './../../../service/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/service/toast.service';
 
 @Component({
     selector: 'app-pay',
@@ -14,7 +15,8 @@ export class PayComponent implements OnInit {
     
     constructor(
         private router: Router,
-        private cartService:CartService
+        private cartService:CartService,
+        private toastService: ToastService,
     ) {
         this.cart={};
      }
@@ -46,5 +48,39 @@ export class PayComponent implements OnInit {
 
       }
     }
+
+    deleteItemCart(cartItem: any) {
+        debugger;
+        console.log(cartItem);
+        this.cartService.deleteItemInCart(cartItem.id).subscribe(
+          data => {
+            this.updateCart();
+          },
+          error => {
+            this.toastService.showError("Error", "Xóa không thành công");
+            if(error.status == 401){
+              localStorage.removeItem("token");
+              localStorage.removeItem("userLogin");
+              this.router.navigate['login'];
+            }
+          }
+        )
+      }
+
+      updateCart() {
+        this.cartService.getCart().subscribe(data => {
+          this.cart = data;
+          this.listCartItem = data.cartItems;
+        },
+          error => {
+            console.log(error);
+            if(error.status == 401){
+              localStorage.removeItem("token");
+              localStorage.removeItem("userLogin");
+              this.router.navigate['login'];
+            }
+          }
+        )
+      }
 
 }
