@@ -1,36 +1,6 @@
-.table_category{
-    margin-top: 30px;
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid #c2cfd6;
-    flex: 1 1 auto;
-    padding: 1.25rem;
-}
-table{
-    // border-top-left-radius: 0;
-    // border-top-right-radius: 0;
-    // border-bottom-right-radius: 3px;
-    // border-bottom-left-radius: 3px;
-    // padding: 10px;
-    margin-bottom: 1rem;
-    background-color: transparent;
+.card{
+    margin-top: 15px;
 }
 .create{
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    // background-color: #f0f3f5;
-    border-bottom: 1px solid #c2cfd6;
-}
-.card-header{
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: #f0f3f5;
-    border-bottom: 1px solid #c2cfd6;
+    margin-bottom: 15px;
 }

@@ -71,6 +71,7 @@ export class UpdateUserInfoComponent implements OnInit {
     console.log(this.updateProfileForm);
     this.user =Object.assign(this.user,this.updateProfileForm.value);
     this.userServcie.updateUser(this.user,this.image).subscribe(data=>{
+      debugger;
       this.toastService.showSuccess("Success","Cập nhật thành công");
       this.router.navigate(['home']);
     },error=>{

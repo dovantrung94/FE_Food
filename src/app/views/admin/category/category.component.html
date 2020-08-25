@@ -1,8 +1,7 @@
-
-<div class="table_category">
-  <div class="card-header">
-    <i class="icon-picture icons "></i> Danh mục
-    </div>
+<div class="card">
+  <div class="card-body">
+  <button type="button" class="btn btn-sm btn-primary create" data-toggle="modal" data-target="#createCategory"><span
+    class="cil-contrast btn-icon mr-2"></span> Create</button>
   <table class="table">
       <tr>
         <th scope="col">Stt</th>
@@ -14,13 +13,14 @@
       <tr *ngFor="let category of categorys" >
         <th scope="row">1</th>
         <td>{{category.name}}</td>
-        <td><span class="badge badge-success">Active</span></td>
+        <td>Active</td>
         <td>
-          <i class="icon-note icons"></i>
+          <i class="icon-note icons" (click)="openModal(category)"></i>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
 </div>
 
 <!-- Modal -->
