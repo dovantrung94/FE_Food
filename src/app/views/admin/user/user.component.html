@@ -9,7 +9,7 @@
           <th scope="col">Stt</th>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
-          <th scope="col">Giói tính</th>
+          <th scope="col">Giới tính</th>
           <th scope="col">Role</th>
           <th scope="col">Ngày đăng kí</th>
           <th scope="col">Trạng thái</th>
@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: p }">
           <td scope="row">1</td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
@@ -39,6 +39,8 @@
         </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
   </div>
 </div>
 
@@ -59,9 +61,9 @@
           <div class="form-group" [formGroup]="editUser"  >
             <input type="hidden" class="form-control" id="category-id" formControlName="id">
             <label for="category-name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="category-name" formControlName="name">
+            <input type="text" class="form-control" id="category-name" formControlName="username">
             <label for="pass" class="col-form-label">Password:</label>
-            <input type="password" class="form-control" id="pass" formControlName="pass">
+            <input type="password" class="form-control" id="pass" formControlName="password">
             <label for="emailregister" class="col-form-label">Email:</label>
             <input type="text" class="form-control" id="emailregister" formControlName="email">
             <div class="row">

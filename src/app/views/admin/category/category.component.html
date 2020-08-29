@@ -10,7 +10,7 @@
         <th scope="col">Action</th>
       </tr>
     <tbody>
-      <tr *ngFor="let category of categorys" >
+      <tr *ngFor="let category of categorys | paginate: { itemsPerPage: 10, currentPage: p }" >
         <th scope="row">1</th>
         <td>{{category.name}}</td>
         <td>Active</td>
@@ -20,8 +20,11 @@
       </tr>
     </tbody>
   </table>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="createCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

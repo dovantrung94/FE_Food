@@ -1,3 +1,5 @@
+import { error } from '@angular/compiler/src/util';
+import { data } from 'jquery';
 import { User } from './../../../model/user';
 import { UserService } from './../../../service/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +19,7 @@ export class UserComponent implements OnInit {
   user=new User();
   sex:string;
   role:string;
+  p: number = 1;
 
   constructor(private userService: UserService,
     private router:Router
@@ -25,6 +28,16 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadAll();
+    this.editUser = new FormGroup({
+      username: new FormControl(),
+      id: new FormControl(),
+      password: new FormControl(),
+      email: new FormControl()
+    });
+  }
+
+  loadAll(){
     this.userService.getAllUser().subscribe(
       data => {
         this.users = data;
@@ -38,12 +51,6 @@ export class UserComponent implements OnInit {
         }
       }
     )
-    this.editUser = new FormGroup({
-      name: new FormControl(),
-      id: new FormControl(),
-      pass: new FormControl(),
-      email: new FormControl()
-    });
   }
 
   createUser() {
@@ -51,8 +58,15 @@ export class UserComponent implements OnInit {
     this.user =Object.assign(this.user,this.editUser.value);
     this.editUser.reset();
     console.log( $('#selectSex').val());
-    $('#selectSex').val();
+   
     $('#createUser').modal('hide');
+    this.user.sex=String( $('#selectSex').val());
+    this.user.role=String($('#selectRole').val());
+    this.userService.createUserByAdmin(this.user).subscribe(data=>{
+      this.loadAll();
+    },error =>{
+      console.log(error);
+    })
   }
   onSubmit() {
 
@@ -70,9 +84,9 @@ export class UserComponent implements OnInit {
     $('#createUser').modal('show');
 
     this.editUser.setValue({
-      name: user.username,
+      username: user.username,
       id: user.id,
-      pass:'',
+      password:'',
       email: user.email
      });
 

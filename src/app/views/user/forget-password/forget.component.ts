@@ -55,11 +55,11 @@ export class ForgetComponent implements OnInit {
 
     loginWithEmail() {
 
-        // this.submitted = true;
+        this.submitted = true;
 
-        // if (this.dataForgetPassword.invalid) {
-        //     return;
-        // }
+        if (this.dataForgetPassword.invalid) {
+            return;
+        }
         // $(".btn-login").addClass("button-disabled");
 
         // var inforLogin = this.dataForgetPassword.value;

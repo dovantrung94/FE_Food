@@ -15,6 +15,7 @@ import { data } from 'jquery';
 })
 export class CategoryComponent implements OnInit {
   categorys=[];
+  p: number = 1;
   category=new Category();
   editCategoryForm: FormGroup;
   constructor(private categoryService :CategoryService,

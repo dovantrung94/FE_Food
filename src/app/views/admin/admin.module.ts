@@ -14,6 +14,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AdminRoutingModule } from './admin.module.routing';
 import * as bootstrap from "bootstrap";
 import * as $ from "jquery";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -34,10 +35,12 @@ import { UserComponent } from './user/user.component';
 import { from } from 'rxjs';
 import { OrderComponent } from './order/order.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ReportComponent } from './report/report.component';
+import { CouponComponent } from './coupon/coupon.component';
 
 @NgModule({
   declarations: [AdminComponent, ProductComponent, UserComponent,CategoryComponent,LogoutComponent,
-     OrderComponent, ProductListComponent,NumberDirective],
+     OrderComponent, ProductListComponent,NumberDirective, ReportComponent, CouponComponent],
   imports: [
     CommonModule,
     ShareModule,
@@ -48,7 +51,8 @@ import { ProductListComponent } from './product-list/product-list.component';
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

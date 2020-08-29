@@ -1,3 +1,5 @@
+import { CouponComponent } from './coupon/coupon.component';
+import { ReportComponent } from './report/report.component';
 import { OrderComponent } from './order/order.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -41,6 +43,14 @@ const routes: Routes = [
             {
                 path:'product/list',
                 component: ProductListComponent
+            },
+            {
+                path:'report',
+                component: ReportComponent
+            },
+            {
+                path:'coupon',
+                component: CouponComponent
             },
             {
                 path:'logout',

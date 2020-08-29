@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   listProduct =[];
+  p: number = 1;
   pageOfItems: Array<any>;
   constructor( private productService: ProductService,
         public commonServ : CommonService,
@@ -34,6 +35,8 @@ export class ProductListComponent implements OnInit {
 
   }
   deleteProduct(id:any){
-    
+
   }
+
+  
 }

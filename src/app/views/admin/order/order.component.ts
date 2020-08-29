@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
   orders = [];
+  p: number = 1;
   constructor(
     private orderService: OrderService,
     private toastService: ToastService,
@@ -19,9 +20,10 @@ export class OrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
       this.orderService.getAllOrderByAdmin().subscribe(
         data => {
-          this.orders=data
+          this.orders=data;
         },
         error =>{
           this.toastService.showError("Error","Get List Order Fail");
@@ -32,6 +34,22 @@ export class OrderComponent implements OnInit {
           }
         }
       )
+  }
+
+  updateOrder(order:any){
+    debugger;
+    if(order.status == 0 ){
+      order.status =1;
+    }else if(order.status ==1){
+      order.status =2;
+    }
+    this.orderService.updateOrder(order).subscribe(data=>{
+      console.log(data);
+    },error => {
+      console.log(data);
+    })
+    console.log(order);
+
   }
 
 }

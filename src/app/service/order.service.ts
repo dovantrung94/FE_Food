@@ -28,7 +28,7 @@ export class OrderService {
         const options = {
             headers: headers
         };
-        return this.httpClient.get<any>(this.baseUrlServer +"admin/order?page=0&size=10",{ headers });
+        return this.httpClient.get<any>(this.baseUrlServer +"admin/order",{ headers });
     }
     getOrderUser():Observable<any>{
         const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
@@ -53,5 +53,13 @@ export class OrderService {
         let order= new Order();
         order.id=id;
         return this.httpClient.put<any>(this.baseUrlServer +"order/cancel",order,{ headers });
+    }
+
+    updateOrder(order:any):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.post<any>(this.baseUrlServer +"admin/order/update",order,{ headers });
     }
 }

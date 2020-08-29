@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <i class="fa fa-align-justify"></i> Danh sách đơn hàng
+        <i class="fa fa-align-justify"></i> Báo cáo theo đơn hàng
     </div>
     <div class="card-body">
         <table class="table table-striped">
@@ -12,7 +12,7 @@
                     <th>Ngày đặt hàng</th>
                     <th>Ngày cập nhật</th>
                     <th>Trạng thái</th>
-                    <th>Hành động</th>
+                    <!-- <th>Hành động</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -29,12 +29,12 @@
                         <span *ngSwitchCase="3">Đã Hủy </span>
                     </td>
 
-                    <td [ngSwitch]="order.status">
+                    <!-- <td [ngSwitch]="order.status">
                         <span *ngSwitchCase="0"><button (click)="updateOrder(order)">Giao hàng</button></span>
                         <span *ngSwitchCase="1"><button (click)="updateOrder(order)">Hoàn thành</button></span>
                         <span *ngSwitchCase="2"></span>
                         <span *ngSwitchCase="3"></span>
-                    </td>
+                    </td> -->
 
                     <!-- <td (click)="orderDetailOpen(order.id)" class="txt-total"><span class="icon-pencil icons"></span></td> -->
                 </tr>

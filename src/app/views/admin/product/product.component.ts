@@ -32,7 +32,6 @@ export class ProductComponent implements OnInit {
     this.categoryService.getAllCategory().subscribe(
 
       data =>{
-        debugger;
         this.categorys = data;
       },
       error=>{
@@ -60,7 +59,6 @@ export class ProductComponent implements OnInit {
   get f() { return this.productFrom.controls; }
 
   onFileChange(event) {
-     debugger;
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.image=file;
@@ -75,13 +73,11 @@ export class ProductComponent implements OnInit {
     if (this.productFrom.invalid) {
         return;
     }
-    debugger;
     console.log(this.productFrom);
     this.product =Object.assign(this.product,this.productFrom.value);
     this.productService.uploadProduct(this.product,this.image).subscribe(
       data =>{
-        debugger;
-        console.log(data);
+        this.router.navigate['admin/product/list']
       },
       error=>{
         this.toastService.showError("Image","Upload image Error");
@@ -93,15 +89,6 @@ export class ProductComponent implements OnInit {
       }
     )
 
-    // this.productService.createProduct(this.product).subscribe(
-    //   data =>{
-    //     debugger;
-    //     console.log(data);
-    //   },
-    //   error=>{
-    //     console.log(error);
-    //   }
-    // )
   }
 
 

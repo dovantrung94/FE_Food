@@ -15,6 +15,7 @@ export const navItems: INavData[] = [
       name: 'Thêm sản phẩm',
       url: 'http://localhost:4200/admin/product/create',
       icon: 'icon-menu',
+      
       attributes: { disabled: false },
     }
   ]
@@ -34,6 +35,18 @@ export const navItems: INavData[] = [
   {
     name: 'Order',
     url: 'http://localhost:4200/admin/order',
+    icon: 'icon-basket',
+    attributes: { disabled: false },
+  },
+  // {
+  //   name: 'Coupon',
+  //   url: 'http://localhost:4200/admin/coupon',
+  //   icon: 'icon-basket',
+  //   attributes: { disabled: false },
+  // },
+  {
+    name: 'Báo cáo',
+    url: 'http://localhost:4200/admin/report',
     icon: 'icon-basket',
     attributes: { disabled: false },
   },
