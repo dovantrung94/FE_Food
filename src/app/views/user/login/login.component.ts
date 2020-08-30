@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
         var inforLogin = this.dataLogin.value;
 
         this.loginService.login(inforLogin.email, inforLogin.password).subscribe(data => {
-            debugger;
             console.log(data);
             this.localServ.setItem("userLogin",data.role);
             this.localServ.setItem("token",'Bearer '+ data.token.split(" "));
@@ -98,7 +97,8 @@ export class LoginComponent implements OnInit {
     }
     forgetPassword(){
         this.userService.forgetPassword(this.forgetpassowrd.value.email).subscribe(data=>{
-            console.log(data);
+           this.toastService.showSuccess("Success","Yêu cầu quên mật khẩu thành công! Vui lòng kiểm tra Email");
+           $('#forgetPassword').modal('hide');
         },
         error=>{
             console.log(error);

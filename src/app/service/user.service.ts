@@ -28,6 +28,13 @@ export class UserService {
         };
         return this.httpClient.post<any>(this.baseUrlServer + "admin/user",user,options)
     }
+    deleteUser(id:number):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.delete<any>(this.baseUrlServer + "admin/user/delete/"+id,options)
+    }
     createUserByGuest(user:User):Observable<any>{
         return this.httpClient.post<any>(this.baseUrlServer + "guest/user",user)
     }
@@ -45,6 +52,15 @@ export class UserService {
             headers: headers
         };
         return this.httpClient.get<User[]>(this.baseUrlServer + "user/detail",options)
+    }
+    // /user/password/reset
+    resetPassword(pass:string,token:string):Observable<any>{
+        debugger;
+        const headers = new HttpHeaders().set('Authorization',token);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.put<any>(this.baseUrlServer + "user/password/reset?pass="+pass+"&token="+token,options)
     }
 
     updateUser(user:User,image:File):Observable<any>{

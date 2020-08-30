@@ -1,33 +1,25 @@
 <div class="card">
     <div class="card-header">
-        <i class="fa fa-align-justify"></i> Báo cáo theo đơn hàng
+        <i class="fa fa-align-justify"></i> Báo cáo theo sản phẩm bán ra
     </div>
     <div class="card-body">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>User Name</th>
-                    <th>Phone</th>
-                    <th>Địa chỉ</th>
-                    <th>Ngày đặt hàng</th>
-                    <th>Ngày cập nhật</th>
-                    <th>Trạng thái</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng mua</th>
+                    <th>Ngày đặt mua</th>
                     <!-- <th>Hành động</th> -->
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let order of orders | paginate: { itemsPerPage: 10, currentPage: p }">
-                    <td>{{order.userName}}</td>
-                    <td>{{order.phone}}</td>
-                    <td>{{order.address}}</td>
-                    <td>{{order.dateCreate}}</td>
-                    <td>{{order.dateUpdate}}</td>
-                    <td [ngSwitch]="order.status">
-                        <span *ngSwitchCase="0">Đặt hàng thành công</span>
-                        <span *ngSwitchCase="1">Đang giao hàng</span>
-                        <span *ngSwitchCase="2">Hoàn thành </span>
-                        <span *ngSwitchCase="3">Đã Hủy </span>
-                    </td>
+                <tr *ngFor="let report of reports | paginate: { itemsPerPage: 10, currentPage: p }">
+                    <td>{{report.productName}}</td>
+                    <td>{{report.price}}</td>
+                    <td>{{report.quantity}}</td>
+                    <td>{{report.dateCreate}}</td>
+      
 
                     <!-- <td [ngSwitch]="order.status">
                         <span *ngSwitchCase="0"><button (click)="updateOrder(order)">Giao hàng</button></span>

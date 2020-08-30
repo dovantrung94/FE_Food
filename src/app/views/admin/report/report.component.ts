@@ -9,16 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report.component.scss']
 })
 export class ReportComponent implements OnInit {
-  orders = [];
+  reports = [];
   p: number = 1;
   constructor(private orderService: OrderService,
     private toastService: ToastService,
     private router:Router) { }
 
   ngOnInit(): void {
-    this.orderService.getAllOrderByAdmin().subscribe(
+    this.orderService.getReport().subscribe(
       data => {
-        this.orders=data;
+        this.reports=data;
       },
       error =>{
         this.toastService.showError("Error","Get List Order Fail");
@@ -29,6 +29,8 @@ export class ReportComponent implements OnInit {
         }
       }
     )
+
+    
   }
 
 }

@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
         user.address = this.dataRegister.value.address;
         this.userService.createUserByGuest(user).subscribe(data => {
             this.toastService.showSuccess("Success", "Đăng kí thành công");
-            this.router.navigate[''];
+            this.router.navigate(['login']);
         }, error => {
             if(error.error.statusRegister ==2 ){
                 this.toastService.showError("Email", "Email đã tồn tại");

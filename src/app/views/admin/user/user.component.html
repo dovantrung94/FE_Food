@@ -6,7 +6,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th scope="col">Stt</th>
+          <th scope="col">Id</th>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
           <th scope="col">Giới tính</th>
@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: p }">
-          <td scope="row">1</td>
+          <td scope="row">{{user.id}}</td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td [ngSwitch]="user.sex">
@@ -35,7 +35,9 @@
             <span *ngSwitchCase="1">Hoạt động</span>
             <span *ngSwitchCase="0">Khóa</span>
           </td>
-          <td><i class="icon-note icons" (click)="updateUser(user)"></i></td>
+          <td><i class="icon-note icons" (click)="updateUser(user)"></i>
+            <i class="icon-trash icons" (click)="deleteUser(user.id)" style="padding-left: 12px;"></i>
+          </td>
         </tr>
       </tbody>
     </table>

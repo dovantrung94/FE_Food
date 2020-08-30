@@ -1,3 +1,5 @@
+import { ToastrModule } from 'ngx-toastr';
+import { LocalStorageService } from './../../../service/local-storage.service';
 import { CartService } from './../../../service/cart.service';
 import { UserService } from './../../../service/user.service';
 import { DataService } from 'src/app/service/data.service';
@@ -33,6 +35,7 @@ export class ConfirmComponent implements OnInit {
         private dataService: DataService,
         private userService: UserService,
         private cartService:CartService
+        // private localStorageService:LocalStorageService
     ) { }
 
     ngOnInit(): void {
@@ -45,7 +48,6 @@ export class ConfirmComponent implements OnInit {
         });
         this.dataConfirm.valueChanges.subscribe(data => this.notiErr = '');
         this.userService.getUserInfo().subscribe(data => {
-            debugger;
             this.dataConfirm.setValue({
                 'name':data.username,
                 'address':data.address,
@@ -61,6 +63,10 @@ export class ConfirmComponent implements OnInit {
         })
         this.cartService.getCart().subscribe(data => {
             this.cart = data;
+            debugger;
+            if(localStorage.getItem("money") !=undefined){
+                this.cart.totalPrice = this.cart.totalPrice - Number(localStorage.getItem("money"));
+            }
           },
             error => {
               console.log(error);
@@ -79,10 +85,15 @@ export class ConfirmComponent implements OnInit {
 
     confirm() {
         this.submitted = true;
+        debugger;
         this.order = Object.assign(this.order, this.dataConfirm.value);
+        console.log(localStorage.getItem("coupon"));
+        this.order.coupons=localStorage.getItem("coupon");
         this.orderService.paymentCart(this.order).subscribe(data => {
             //đặt hàng thành công thì chuyển về trang lịch sử mua hàng 
             this.toastService.showSuccess("success", "Đặt hàng thành công");
+            localStorage.removeItem("coupon");
+            localStorage.removeItem("money");
             this.router.navigate(['home/history']);
             this.dataService.setcartValue("" + this.order);
         },

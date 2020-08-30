@@ -50,12 +50,20 @@ export class ProductService {
 
 
     getProductDetail(id:Number):Observable<any>{
-        debugger;
         const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {
             headers: headers
         };
      return this.httpClient.get<any>(this.baseUrlServer + "product/"+id,options)
+    }
+
+    deleteProduct(id:Number,productDetailid:number):Observable<any>{
+        debugger;
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+     return this.httpClient.delete<any>(this.baseUrlServer + "products/delete?id="+id+"&productDetailId="+productDetailid,options)
     }
 
     createProduct(product:Product):Observable<any>{ 
@@ -65,6 +73,15 @@ export class ProductService {
         };
         return this.httpClient.post<any>(this.baseUrlServer +"admin/product/upload" ,product,{ headers });
     }
+
+    updateProduct(product:Product):Observable<any>{ 
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.put<any>(this.baseUrlServer +"product/update" ,product,{ headers });
+    }
+
     getProductNew():Observable<Product>{
         const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {

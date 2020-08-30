@@ -25,6 +25,15 @@ export class CategoryComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+
+    this.loadAll();
+    this.editCategoryForm = new FormGroup({
+      name: new FormControl(),
+      id: new FormControl()
+    });
+  }
+
+  loadAll(){
     this.categoryService.getAllCategory().subscribe(
       data =>{
         this.categorys = data;
@@ -37,12 +46,17 @@ export class CategoryComponent implements OnInit {
         }
       }
     )
-
-    this.editCategoryForm = new FormGroup({
-      name: new FormControl(),
-      id: new FormControl()
-    });
   }
+
+  deleteCategory(id:number){
+    this.categoryService.deleteCategory(id).subscribe(data=>{
+      this.toastService.showSuccess("Success","Delete Success");
+      this.loadAll();
+    },error =>{
+      this.toastService.showError("Error","Delete Error");
+    })
+  }
+
   createCategory(){
     console.log(this.editCategoryForm.value);
     if (this.editCategoryForm.value.name === "")

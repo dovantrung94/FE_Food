@@ -11,6 +11,7 @@
                     <th>Địa chỉ</th>
                     <th>Ngày đặt hàng</th>
                     <th>Ngày cập nhật</th>
+                    <th>Tổng tiền</th>
                     <th>Trạng thái</th>
                     <th>Hành động</th>
                 </tr>
@@ -22,6 +23,7 @@
                     <td>{{order.address}}</td>
                     <td>{{order.dateCreate}}</td>
                     <td>{{order.dateUpdate}}</td>
+                    <td>{{order.totalPrice}}</td>
                     <td [ngSwitch]="order.status">
                         <span *ngSwitchCase="0">Đặt hàng thành công</span>
                         <span *ngSwitchCase="1">Đang giao hàng</span>

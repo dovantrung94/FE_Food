@@ -38,12 +38,12 @@ export const navItems: INavData[] = [
     icon: 'icon-basket',
     attributes: { disabled: false },
   },
-  // {
-  //   name: 'Coupon',
-  //   url: 'http://localhost:4200/admin/coupon',
-  //   icon: 'icon-basket',
-  //   attributes: { disabled: false },
-  // },
+  {
+    name: 'Coupon',
+    url: 'http://localhost:4200/admin/coupon',
+    icon: 'icon-basket',
+    attributes: { disabled: false },
+  },
   {
     name: 'Báo cáo',
     url: 'http://localhost:4200/admin/report',

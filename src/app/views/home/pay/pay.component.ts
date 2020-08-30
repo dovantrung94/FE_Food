@@ -1,8 +1,11 @@
+import { data } from 'jquery';
+import { CouponService } from './../../../service/coupon.service';
 import { error } from '@angular/compiler/src/util';
 import { CartService } from './../../../service/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/service/toast.service';
+import { LocalStorageService } from 'src/app/service/local-storage.service';
 
 @Component({
     selector: 'app-pay',
@@ -17,6 +20,8 @@ export class PayComponent implements OnInit {
         private router: Router,
         private cartService:CartService,
         private toastService: ToastService,
+        private localServ : LocalStorageService,
+        private couponService:CouponService
     ) {
         this.cart={};
      }
@@ -47,6 +52,24 @@ export class PayComponent implements OnInit {
       } else {
 
       }
+    }
+
+    applyCoupon(){
+     let coupon= $('#couponCode').val();
+      //lay value cua coupon 
+      //goi service kiem tra
+      this.couponService.checkCoupon(coupon).subscribe(data=>{
+        debugger;
+        this.toastService.showSuccess("Success","Add Coupon success");
+        this.localServ.setItem("coupon",coupon);
+        this.localServ.setItem("money",data.money);
+        //set vao roi thi tru tien di 
+        this.cart.totalPrice=this.cart.totalPrice - data.money;
+      },error =>{
+        this.toastService.showError("Error","Coupon không chính xác");
+      })
+      // this.localServ.setItem("coupon",coupon);
+
     }
 
     deleteItemCart(cartItem: any) {

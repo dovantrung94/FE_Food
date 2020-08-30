@@ -15,4 +15,5 @@ export class Product {
     description:string;
     color:string;
     image:File;
+    productDetailId:number;
 }

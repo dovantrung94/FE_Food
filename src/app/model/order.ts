@@ -4,4 +4,5 @@ export class Order{
     phone:string;
     address:string;
     email:string;
+    coupons:string;
 }

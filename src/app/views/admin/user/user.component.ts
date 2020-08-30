@@ -1,3 +1,4 @@
+import { ToastService } from './../../../service/toast.service';
 import { error } from '@angular/compiler/src/util';
 import { data } from 'jquery';
 import { User } from './../../../model/user';
@@ -22,7 +23,8 @@ export class UserComponent implements OnInit {
   p: number = 1;
 
   constructor(private userService: UserService,
-    private router:Router
+    private router:Router,
+    private toastService:ToastService
     ) {
     this.edit=false;
   }
@@ -73,6 +75,16 @@ export class UserComponent implements OnInit {
   }
   selectChangeSex(event) {
    this.sex=event.target.value;
+  }
+
+  deleteUser(id:number){
+    console.log(id);
+    this.userService.deleteUser(id).subscribe(data=>{
+      this.toastService.showSuccess("Success","Delete Success");
+      this.loadAll();
+    },error =>{
+      this.toastService.showError("Error","Delete Error");
+    })
   }
 
   selectChangeRole(event) {

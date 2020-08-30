@@ -30,6 +30,14 @@ export class CategoryService {
         return this.httpClient.post<any>(this.baseUrlServer + "category",category,options);
     }
 
+    deleteCategory(id:number):Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.delete<any>(this.baseUrlServer + "admin/category/delete/"+id,options)
+    }
+
     updateCategory(category:Category):Observable<any>{
         debugger;
         const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);

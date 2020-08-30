@@ -16,6 +16,9 @@ export class OrderService {
     }
 
     paymentCart(order:Order):Observable<any>{
+        if(order.coupons !=null ){
+            order.coupons=order.coupons.split('"')[1];
+        }
         const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
         const options = {
             headers: headers
@@ -61,5 +64,13 @@ export class OrderService {
             headers: headers
         };
         return this.httpClient.post<any>(this.baseUrlServer +"admin/order/update",order,{ headers });
+    }
+
+    getReport():Observable<any>{
+        const headers = new HttpHeaders().set('Authorization',  localStorage.getItem("token").split('"')[1]);
+        const options = {
+            headers: headers
+        };
+        return this.httpClient.get<any>(this.baseUrlServer +"admin/report",{ headers });
     }
 }

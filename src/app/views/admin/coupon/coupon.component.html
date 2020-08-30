@@ -1,70 +1,80 @@
 <div class="card">
-    <div class="card-header">
+  <div class="card-header">
     <i class="fa fa-align-justify"></i> Danh sách coupon
     <button type="button" class="btn btn-sm btn-primary create" data-toggle="modal" data-target="#createCoupon"><span
         class="cil-contrast btn-icon mr-2"></span> Create</button>
-    </div>
-    <div class="card-body">
+  </div>
+  <div class="card-body">
     <table class="table table-striped">
-    <thead>
-    <tr>
-    <th>Coupons</th>
-    <th>Money</th>
-    <th>Start time</th>
-    <th>End time</th>
-    <th>Status</th>
-    </tr>
-    </thead>
-    <tbody> 
-    <tr *ngFor="let item of listProduct | paginate: { itemsPerPage: 10, currentPage: p }" >
-    <td>{{item.name}}</td>
-    <td>{{item.categoryName}}</td>
-    <td>{{item.price}}</td>
-    <td>{{item.priceSale}}</td>
+      <thead>
+        <tr>
+          <th>Coupons</th>
+          <th>Money</th>
+          <th>Start time</th>
+          <th>End time</th>
+          <th>Status</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listCoupon | paginate: { itemsPerPage: 10, currentPage: p }">
+          <td>{{item.coupons}}</td>
+          <td>{{item.money}}</td>
+          <td>{{item.startTime}}</td>
+          <td>{{item.endTime}}</td>
 
-    <td [ngSwitch]="item.status">
-        <span *ngSwitchCase="0">Chưa sử dụng</span>
-        <span *ngSwitchCase="1">Đã sử dụng</span>
-      
-    </td>
+          <td [ngSwitch]="item.status">
+            <span *ngSwitchCase="1">Chưa sử dụng</span>
+            <span *ngSwitchCase="0">Đã sử dụng</span>
 
-    <td><i class="icon-note icons" (click)="updateProduct(item)"></i>
-        <i class="icon-trash icons" (click)="deleteProduct(item.id)" style="padding-left: 12px;"></i>
-    </td>
-    <!-- (click)="updateUser(user) -->
-    </tr>
+          </td>
+
+          <td>
+            <i class="icon-trash icons" (click)="deleteCoupon(item.id)" style="padding-left: 12px;"></i>
+          </td>
+        </tr>
 
 
-    </tbody>
+      </tbody>
     </table>
 
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 
-<!-- Modal -->
-<div class="modal fade" id="createCoupon" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5  class="modal-title" id="exampleModalLongTitle">Create Coupon</h5>
-        <!-- <h5 *ngIf="edit" class="modal-title" id="exampleModalLongTitle">Update User</h5> -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form >
-          <div class="form-group" [formGroup]="editCoupon"  >
-            <input type="hidden" class="form-control" id="category-id" formControlName="id">
-            <label for="category-name" class="col-form-label">Name:</label>
+    <!-- Modal -->
+    <div class="modal fade" id="createCoupon" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLongTitle">Create Coupon</h4>
+            <!-- <h5 *ngIf="edit" class="modal-title" id="exampleModalLongTitle">Update User</h5> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" (click)="createCoupon()" class="btn btn-primary">Save</button>
+          <div class="modal-body">
+            <form>
+              <div class="form-group" [formGroup]="editCoupon">
+                <label for="category-name" class="col-form-label">Số lượng:</label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.couponCount.errors }"
+                  numbersOnly id="category-name" formControlName="couponCount">
+                <div *ngIf="submitted && f.couponCount.errors" class="invalid-feedback">
+                  <div *ngIf="f.couponCount.errors.required">Số lượng là bắt buộc</div>
+                </div>
+                <label for="category-name" class="col-form-label">Giá trị:</label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.couponMoney.errors }"
+                  numbersOnly id="category-name" formControlName="couponMoney">
+                  <div *ngIf="submitted && f.couponMoney.errors" class="invalid-feedback">
+                    <div *ngIf="f.couponMoney.errors.required">Giá trị là bắt buộc</div>
+                  </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" (click)="createCoupon()" class="btn btn-primary">Save</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>

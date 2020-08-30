@@ -4,18 +4,19 @@
     class="cil-contrast btn-icon mr-2"></span> Create</button>
   <table class="table">
       <tr>
-        <th scope="col">Stt</th>
+        <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
     <tbody>
       <tr *ngFor="let category of categorys | paginate: { itemsPerPage: 10, currentPage: p }" >
-        <th scope="row">1</th>
+        <th scope="row">{{category.id}}</th>
         <td>{{category.name}}</td>
         <td>Active</td>
         <td>
           <i class="icon-note icons" (click)="openModal(category)"></i>
+          <i class="icon-trash icons" (click)="deleteCategory(category.id)" style="padding-left: 12px;"></i>
         </td>
       </tr>
     </tbody>
